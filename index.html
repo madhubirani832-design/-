@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অনлайн এমসিকিউ প্রতিযোগিতা</title>
+    <style>
+        /* সম্পূর্ণ পেজে লং-প্রেস ও টেক্সট সিলেক্ট বন্ধ করার কড়া সিকিউরিটি */
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        
+        /* শুধুমাত্র ইনপুট বক্সে টাইপ করার অনুমতি */
+        input[type="text"], input[type="number"] {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            background: #fff;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .timer-box {
+            position: sticky;
+            top: 10px;
+            background: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .info-section {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 25px;
+        }
+        .info-group {
+            margin-bottom: 15px;
+        }
+        .info-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .info-group input[type="text"], .info-group input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #fff;
+        }
+        .enter-btn {
+            display: block;
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .enter-btn:hover { background: #219653; }
+        .question-card {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media(max-width: 500px) {
+            .options { grid-template-columns: 1fr; }
+        }
+        .option-label {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .option-label:hover { background: #e9ecef; }
+        .option-label input { margin-right: 10px; transform: scale(1.1); }
+        .feedback-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border-left: 5px solid #2ecc71;
+        }
+        .feedback-group { margin-bottom: 15px; }
+        .feedback-group p { font-weight: bold; margin-bottom: 8px; }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .block-message {
+            text-align: center;
+            color: #c0392b;
+            padding: 50px 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainContainer">
+    <div id="coverPage">
+        <h1>🏆 অনলাইন এমসিকিউ প্রতিযোগিতা 🏆</h1>
+        <div class="info-section">
+            <div class="info-group">
+                <label>👤 নাম:</label>
+                <input type="text" id="student_name" placeholder="তোমার নাম লেখো">
+            </div>
+            <div class="info-group">
+                <label>🔢 রোল নম্বর:</label>
+                <input type="number" id="student_roll" placeholder="তোমার রোল নম্বর লেখো">
+            </div>
+            <div class="info-group">
+                <label>🏫 স্কুলের নাম:</label>
+                <input type="text" id="school_name" placeholder="তোমার স্কুলের নাম লেখো">
+            </div>
+            <div class="info-group">
+                <label>📍 জেলা:</label>
+                <input type="text" id="district" placeholder="জেলার নাম লেখো">
+            </div>
+            <div class="info-group">
+                <label>📋 বোর্ড:</label>
+                <input type="text" id="board" placeholder="শিক্ষা বোর্ডের নাম লেখো">
+            </div>
+            <button type="button" class="enter-btn" onclick="startExam()">পরীক্ষায় প্রবেশ করুন</button>
+        </div>
+    </div>
+
+    <div id="examPage" style="display: none;">
+        <div class="timer-box" id="timer">বাকি সময়: ৩০:০০ মিনিট</div>
+        
+        <form id="quizForm" onsubmit="handleFormSubmit(event)">
+            <div class="question-card">
+                <div class="question-text">১. A = {x ∈ ℕ : 1 < x < 30 এবং x, 12 এর গুণনীয়ক} হলে, সেট A এর সঠিক উপাদান কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q1" value="ক"> (ক) {1, 2, 3, 4, 6, 12}</label>
+                    <label class="option-label"><input type="radio" name="q1" value="খ"> (খ) {2, 3, 4, 6, 12}</label>
+                    <label class="option-label"><input type="radio" name="q1" value="গ"> (গ) {2, 3, 4, 6}</label>
+                    <label class="option-label"><input type="radio" name="q1" value="ঘ"> (ঘ) {1, 2, 3, 4, 6}</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২. নিচের কোনটি বাংলা সাহিত্যের প্রথম সার্থক উপন্যাস?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q2" value="ক"> (ক) আলালের ঘরের দুলাল</label>
+                    <label class="option-label"><input type="radio" name="q2" value="খ"> (খ) দুর্গেশনন্দিনী</label>
+                    <label class="option-label"><input type="radio" name="q2" value="গ"> (গ) কপালকুণ্ডলা</label>
+                    <label class="option-label"><input type="radio" name="q2" value="ঘ"> (ঘ) ফুলমণি ও করুণার বিবরণ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৩. 'কপোতাক্ষ নদ' কবিতায় "আর কি হবে দেখা?– এ প্রবাসে" পঙ্ক্তিটিতে কবির মনে মূলত কী প্রকাশ পেয়েছে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q3" value="ক"> (ক) গভীর অনুশোচনা</label>
+                    <label class="option-label"><input type="radio" name="q3" value="খ"> (খ) সংশয় বা সন্দেহ</label>
+                    <label class="option-label"><input type="radio" name="q3" value="গ"> (গ) চরম নিরাশা</label>
+                    <label class="option-label"><input type="radio" name="q3" value="ঘ"> (ঘ) প্রবাস জীবনের ক্ষোভ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৪. "বন্দনা" কবিতায় কবি সবার কাছে কেন প্রার্থনা করেছেন?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q4" value="ক"> (ক) জগৎসংসারে অমরত্ব লাভের জন্য</label>
+                    <label class="option-label"><input type="radio" name="q4" value="খ"> (খ) পূর্বসূরিদের পাপ থেকে মুক্তি পাওয়ার জন্য</label>
+                    <label class="option-label"><input type="radio" name="q4" value="গ"> (গ) কাব্য রচনায় সাফল্য লাভের জন্য</label>
+                    <label class="option-label"><input type="radio" name="q4" value="ঘ"> (ঘ) সমালোচকদের হাত থেকে রক্ষা পাওয়ার জন্য</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৫. নেটওয়ার্কিং প্রযুক্তিতে DNS Server মূলত কেন ব্যবহার করা হয়?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q5" value="ক"> (ক) IP অ্যাড্রেসকে MAC অ্যাড্রেসে রূপান্তর করতে</label>
+                    <label class="option-label"><input type="radio" name="q5" value="খ"> (খ) ডোমেন নেমকে (Domain Name) IP অ্যাড্রেসে রূপান্তর করতে</label>
+                    <label class="option-label"><input type="radio" name="q5" value="গ"> (গ) IP অ্যাড্রেসকে ডোমেন নেমে (Reverse Lookup) রূপান্তর করতে</label>
+                    <label class="option-label"><input type="radio" name="q5" value="ঘ"> (ঘ) ডোমেন নেমকে সরাসরি বাইনারি ডেটায় রূপান্তর করতে</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৬. 'চন্দ্রমুখ' এর সঠিক সমস্যমান পদ কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q6" value="ক"> (ক) চন্দ্রের ন্যায় মুখ</label>
+                    <label class="option-label"><input type="radio" name="q6" value="খ"> (খ) মুখ চন্দ্রের ন্যায়</label>
+                    <label class="option-label"><input type="radio" name="q6" value="গ"> (গ) চন্দ্র ও মুখ</label>
+                    <label class="option-label"><input type="radio" name="q6" value="ঘ"> (ঘ) চন্দ্র রূপ মুখ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৭. নিউটনের ৩য় সূত্রের সঠিক গাণিতিক রূপ নিচের কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q7" value="ক"> (ক) F = ma</label>
+                    <label class="option-label"><input type="radio" name="q7" value="খ"> (খ) F1 = F2</label>
+                    <label class="option-label"><input type="radio" name="q7" value="গ"> (গ) F1 = -F2</label>
+                    <label class="option-label"><input type="radio" name="q7" value="ঘ"> (ঘ) ΔF = 0</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৮. রসায়নবিদ মেন্ডেলিফ কতটি আবিষ্কৃত মৌল নিয়ে তাঁর বিখ্যাত প্রথম পর্যায় সারণি (পারমাণবিক টেবিল) বানিয়েছিলেন?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q8" value="ক"> (ক) ৫৭টি</label>
+                    <label class="option-label"><input type="radio" name="q8" value="খ"> (খ) ৬৩টি</label>
+                    <label class="option-label"><input type="radio" name="q8" value="গ"> (গ) ৬৬টি</label>
+                    <label class="option-label"><input type="radio" name="q8" value="ঘ"> (ঘ) ৭১টি</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৯. নিচের কোনটি মাইকেল মধুসূদন দত্তের প্রথম সার্থক ট্রাজেডি রচনা?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q9" value="ক"> (ক) শর্মিষ্ঠা</label>
+                    <label class="option-label"><input type="radio" name="q9" value="খ"> (খ) পদ্মাবতী</label>
+                    <label class="option-label"><input type="radio" name="q9" value="গ"> (গ) কৃষ্ণকুমারী</label>
+                    <label class="option-label"><input type="radio" name="q9" value="ঘ"> (ঘ) মায়াকানন</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১০. "Those who are students, they have many duties." — বাক্যটির সঠিক Simple form কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q10" value="ক"> (ক) Being students, they have many duties.</label>
+                    <label class="option-label"><input type="radio" name="q10" value="খ"> (খ) Students have many duties.</label>
+                    <label class="option-label"><input type="radio" name="q10" value="গ"> (গ) For being students, they have duties.</label>
+                    <label class="option-label"><input type="radio" name="q10" value="ঘ"> (ঘ) Having duties is the main task of students.</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১১. চলতি মে মাসে মোট বৃষ্টি হয়েছে ১২ দিন। মাসটিতে হঠাৎ কোনো একদিন বৃষ্টি না হওয়ার সম্ভাবনা (Probability) কত?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q11" value="ক"> (ক) ১২/৩১</label>
+                    <label class="option-label"><input type="radio" name="q11" value="খ"> (খ) ১৯/৩০</label>
+                    <label class="option-label"><input type="radio" name="q11" value="গ"> (গ) ১ - ১২/৩১</label>
+                    <label class="option-label"><input type="radio" name="q11" value="ঘ"> (ঘ) ১ - ১২/৩০</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১২. ‘অ্যাপোলোনিয়াসের উপপাদ্যটি’ মূলত ত্রিভুজের কোন দুটি বিষয়ের মধ্যে পারস্পরিক সম্পর্ক স্থাপন করে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q12" value="ক"> (ক) ত্রিভুজের বাহু ও কোণ</label>
+                    <label class="option-label"><input type="radio" name="q12" value="খ"> (খ) ত্রিভুজের বাহু ও মধ্যমা</label>
+                    <label class="option-label"><input type="radio" name="q12" value="গ"> (গ) ত্রিভুজের মধ্যমা ও কোণ</label>
+                    <label class="option-label"><input type="radio" name="q12" value="ঘ"> (ঘ) ত্রিভুজের অন্তর্বৃত্ত ও বহির্বৃত্তের ব্যাসার্ধ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৩. তথ্য প্রযুক্তির ভাষায় কম্পিউটারের হার্ডওয়্যার বা সফটওয়্যারের কোনো জটিল সমস্যার উৎস খুঁজে বের করে তা সমাধান করার প্রক্রিয়াকে কী বলে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q13" value="ক"> (ক) Debugging</label>
+                    <label class="option-label"><input type="radio" name="q13" value="খ"> (খ) Troubleshooting</label>
+                    <label class="option-label"><input type="radio" name="q13" value="গ"> (গ) Programming</label>
+                    <label class="option-label"><input type="radio" name="q13" value="ঘ"> (ঘ) Patching</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৪. রাষ্ট্রবিজ্ঞানে রাষ্ট্রের সংজ্ঞা সবচেয়ে নিখুঁত ও সর্বোত্তমভাবে কে উপস্থাপন করেছেন?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q14" value="ক"> (ক) এরিস্টটল</label>
+                    <label class="option-label"><input type="radio" name="q14" value="খ"> (খ) ম্যাকাইভার</label>
+                    <label class="option-label"><input type="radio" name="q14" value="গ"> (গ) অধ্যাপক গার্নার</label>
+                    <label class="option-label"><input type="radio" name="q14" value="ঘ"> (ঘ) উড্রো উইলসন</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৫. গণপ্রজাতন্ত্রী বাংলাদেশের সংবিধান কত সালের কত তারিখে চূড়ান্তভাবে কার্যকর করা হয়?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q15" value="ক"> (ক) ৪ নভেম্বর ১৯৭২</label>
+                    <label class="option-label"><input type="radio" name="q15" value="খ"> (খ) ১৬ ডিসেম্বর ১৯৭২</label>
+                    <label class="option-label"><input type="radio" name="q15" value="গ"> (গ) ২৬ মার্চ ১৯৭২</label>
+                    <label class="option-label"><input type="radio" name="q15" value="ঘ"> (ঘ) ১৬ ডিসেম্বর ১৯৭১</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৬. f(x) = √(x-2) ফাংশনটির বাস্তব ডোমেন (Domain) নিচের কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q16" value="ক"> (ক) x ≥ 2</label>
+                    <label class="option-label"><input type="radio" name="q16" value="খ"> (খ) x > 2</label>
+                    <label class="option-label"><input type="radio" name="q16" value="গ"> (গ) x ≤ 2</label>
+                    <label class="option-label"><input type="radio" name="q16" value="ঘ"> (ঘ) R \ {2}</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৭. "বৃত্তে অন্তর্লিখিত কোনো চতুর্ভুজের কর্ণদ্বয়ের অন্তর্গত আয়তক্ষেত্র, তার বিপরীত বাহুদ্বয়ের অন্তর্গত আয়তক্ষেত্রের সমষ্টির সমান।" — এটি কার উপপাদ্য?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q17" value="ক"> (ক) অ্যাপোলোনিয়াস</label>
+                    <label class="option-label"><input type="radio" name="q17" value="খ"> (খ) টলেমি</label>
+                    <label class="option-label"><input type="radio" name="q17" value="গ"> (গ) পিথাগোরাস</label>
+                    <label class="option-label"><input type="radio" name="q17" value="ঘ"> (ঘ) ইউক্লিড</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৮. △ABC এর মধ্যমা AD হলে, অ্যাপোলোনিয়াসের উপপাদ্য অনুযায়ী নিচের কোনটি পরম সত্য?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q18" value="ক"> (ক) AB² + AC² = 2(AD² + BD²)</label>
+                    <label class="option-label"><input type="radio" name="q18" value="খ"> (খ) AB² + AC² = AD² + BD²</label>
+                    <label class="option-label"><input type="radio" name="q18" value="গ"> (গ) AB² + AC² = 2AD² + BD²</label>
+                    <label class="option-label"><input type="radio" name="q18" value="ঘ"> (ঘ) AB² + AC² = 2(AD² - BD²)</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">১৯. f(x) = (2x+1)/(x-3) ফাংশনটির রেঞ্জ (Range) নিচের কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q19" value="ক"> (ক) R \ {3}</label>
+                    <label class="option-label"><input type="radio" name="q19" value="খ"> (খ) R \ {2}</label>
+                    <label class="option-label"><input type="radio" name="q19" value="গ"> (গ) R \ {-3}</label>
+                    <label class="option-label"><input type="radio" name="q19" value="ঘ"> (ঘ) R \ {1/2}</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২০. কাজের মাত্রা সমীকরণ [ML²T⁻²] হলে, ক্ষমতার মাত্রা সমীকরণ বের করার জন্য কাজের মাত্রাকে নিচের কোন রাশির মাত্রা দিয়ে ভাগ করতে হবে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q20" value="ক"> (ক) দৈর্ঘ্যের মাত্রা (L)</label>
+                    <label class="option-label"><input type="radio" name="q20" value="খ"> (খ) সময়ের মাত্রা (T)</label>
+                    <label class="option-label"><input type="radio" name="q20" value="গ"> (গ) ভরের মাত্রা (M)</label>
+                    <label class="option-label"><input type="radio" name="q20" value="ঘ"> (ঘ) কম্পাঙ্কের মাত্রা (T⁻¹)</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২১. নির্দিষ্ট ভরের কোনো চলমান বস্তুর গতিশক্তিকে যদি হঠাৎ আদি গতিশক্তির ৯ গুণ করা হয়, তবে তার ভরবেগ পূর্বের তুলনায় কত গুণ বৃদ্ধি পাবে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q21" value="ক"> (ক) ৩ গুণ</label>
+                    <label class="option-label"><input type="radio" name="q21" value="খ"> (খ) ৯ গুণ</label>
+                    <label class="option-label"><input type="radio" name="q21" value="গ"> (গ) ৮০১ গুণ</label>
+                    <label class="option-label"><input type="radio" name="q21" value="ঘ"> (ঘ) ২৭ গুণ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২২. পটাশিয়ামের (K) ১৯তম ইলেকট্রনটি ৩য় শক্তিস্তরের 3d অরবিটালে না গিয়ে ৪র্থ স্তরের 4s অরবিটালে প্রবেশ করার মূল বৈজ্ঞানিক কারণ কী?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q22" value="ক"> (ক) 3d অরবিটালের শক্তি 4s অপেক্ষা কম</label>
+                    <label class="option-label"><input type="radio" name="q22" value="খ"> (খ) 4s অরবিটালের শক্তি 3d অপেক্ষা কম</label>
+                    <label class="option-label"><input type="radio" name="q22" value="গ"> (গ) 3d অরবিটালের ইলেকট্রন ধারণক্ষমতা বেশি</label>
+                    <label class="option-label"><input type="radio" name="q22" value="ঘ"> (ঘ) 4s অরবিটালের প্রধান কোয়ান্টাম সংখ্যা বেশি</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৩. জীবজগতে প্রজাতির নিজস্ব বৈশিষ্ট্য অক্ষুণ্ণ রাখতে এবং বংশপরম্পরায় ক্রোমোজম সংখ্যায় ধ্রুবতা বা সমতা বজায় রাখতে কোন কোষ বিভাজনটি সরাসরি কাজ করে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q23" value="ক"> (ক) মাইটোসিস</label>
+                    <label class="option-label"><input type="radio" name="q23" value="খ"> (খ) অ্যামাইটোসিস</label>
+                    <label class="option-label"><input type="radio" name="q23" value="গ"> (গ) মিয়োসিস</label>
+                    <label class="option-label"><input type="radio" name="q23" value="ঘ"> (ঘ) সাইটোকাইনেসিস</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৪. ৩য় শক্তিস্তরের সর্বোচ্চ ইলেকট্রন ধারণক্ষমতা ১৮টি হওয়া সত্ত্বেও পটাশিয়ামের ক্ষেত্রে ৩য় স্তরে ৮টি ইলেকট্রন রেখে পরবর্তী স্তরে ইলেকট্রন যাওয়ার মাধ্যমে 2n² সূত্রের যে বিचयুতি ঘটে, তা কোন নীতি দ্বারা নিয়ন্ত্রিত হয়?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q24" value="ক"> (ক) হুন্ডের নীতি</label>
+                    <label class="option-label"><input type="radio" name="q24" value="খ"> (খ) আউফবাউ নীতি</label>
+                    <label class="option-label"><input type="radio" name="q24" value="গ"> (গ) পলির বর্জন নীতি</label>
+                    <label class="option-label"><input type="radio" name="q24" value="ঘ"> (ঘ) হাইজেনবার্গের অনিশ্চয়তা নীতি</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৫. 'রাজপথ' শব্দটির সঠিক সমস্যমান পদ নিচের কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q25" value="ক"> (ক) রাজার পথ</label>
+                    <label class="option-label"><input type="radio" name="q25" value="খ"> (খ) পথের রাজা</label>
+                    <label class="option-label"><input type="radio" name="q25" value="গ"> (গ) রাজকীয় পথ</label>
+                    <label class="option-label"><input type="radio" name="q25" value="ঘ"> (ঘ) রাজ সংলগ্ন পথ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৬. বিষয়বস্তুর দিক থেকে মাইকেল মধুসূদন দত্তের 'কপোতাক্ষ নদ' কবিতাটি মূলত কোন ধরনের কবিতা?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q26" value="ক"> (ক) সনেট</label>
+                    <label class="option-label"><input type="radio" name="q26" value="খ"> (খ) স্মৃতিকাতরতামূলক</label>
+                    <label class="option-label"><input type="radio" name="q26" value="গ"> (গ) देशপ্রেমমূলক</label>
+                    <label class="option-label"><input type="radio" name="q26" value="ঘ"> (ঘ) আখ্যানমূলক</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৭. 'অন্ধবধূ' কবিতায় বধೂটির অনুভূতির হিসাবে জ্যৈষ্ঠ মাস আসতে আর কতদিন বাকি আছে?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q27" value="ক"> (ক) ২ মাস</label>
+                    <label class="option-label"><input type="radio" name="q27" value="খ"> (খ) কিছুদিন</label>
+                    <label class="option-label"><input type="radio" name="q27" value="গ"> (গ) অনেক দিন</label>
+                    <label class="option-label"><input type="radio" name="q27" value="ঘ"> (ঘ) ১ মাস</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৮. x² - 1 + 2y - y² এর সঠিক উৎপাদকে বিশ্লেষিত রূপ কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q28" value="ক"> (ক) (x+y-1)(x-y-1)</label>
+                    <label class="option-label"><input type="radio" name="q28" value="খ"> (খ) (x+y-1)(x-y+1)</label>
+                    <label class="option-label"><input type="radio" name="q28" value="গ"> (গ) (x-y-1)(x-y+1)</label>
+                    <label class="option-label"><input type="radio" name="q28" value="ঘ"> (ঘ) (x+y+1)(x-y-1)</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">২৯. 'কপোতাক্ষ নদ' কবিতার শেষ ৬ চরণের (ষষ্ঠক) অন্ত্যমিল বিন্যাস কোনটি?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q29" value="ক"> (ক) কখকখকখ</label>
+                    <label class="option-label"><input type="radio" name="q29" value="খ"> (খ) গഘগഘগഘ</label>
+                    <label class="option-label"><input type="radio" name="q29" value="গ"> (গ) গഘঙগഘঙ</label>
+                    <label class="option-label"><input type="radio" name="q29" value="ঘ"> (ঘ) কখখককখ</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৩০. বাংলা সাহিত্যে 'বীরবল' কার বিখ্যাত ছদ্মনাম?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q30" value="ক"> (ক) প্রমথ চৌধুরী</label>
+                    <label class="option-label"><input type="radio" name="q30" value="খ"> (খ) বঙ্কিমচন্দ্র চট্টোপাধ্যায়</label>
+                    <label class="option-label"><input type="radio" name="q30" value="গ"> (গ) রজনীকান্ত সেন</label>
+                    <label class="option-label"><input type="radio" name="q30" value="ঘ"> (ঘ) রবীন্দ্রনাথ ঠাকুর</label>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-text">৩১. 'ঝরনার গান' কবিতায় নিচের কে বা কোনটি নূপুর পায়ে দিয়ে নেচে চলতে চায়?</div>
+                <div class="options">
+                    <label class="option-label"><input type="radio" name="q31" value="ক"> (ক) ঝরনা</label>
+                    <label class="option-label"><input type="radio" name="q31" value="খ"> (খ) কবি</label>
+                    <label class="option-label"><input type="radio" name="q31" value="গ"> (গ) পাখি</label>
+                    <label class="option-label"><input type="radio" name="q31" value="ঘ"> (ঘ) পাথর</label>
+                </div>
+            </div>
+
+            <div class="feedback-section">
+                <h3>💬 মন্তব্য সেকশন (বাধ্যতামূলক)</h3>
+                <div class="feedback-group">
+                    <p>পরীক্ষাটি কেমন লাগলো— *</p>
+                    <label><input type="radio" name="fb_rating" value="অনেক ভালো"> অনেক ভালো</label><br>
+                    <label><input type="radio" name="fb_rating" value="ভালো"> ভালো</label><br>
+                    <label><input type="radio" name="fb_rating" value="মোটামুটি"> মোটামুটি</label><br>
+                    <label><input type="radio" name="fb_rating" value="খারাপ"> খারাপ</label>
+                </div>
+                <div class="feedback-group">
+                    <p>পরীক্ষার প্রশ্ন কেমন ছিল — *</p>
+                    <label><input type="radio" name="fb_diff" value="সহজ"> সহজ</label><br>
+                    <label><input type="radio" name="fb_diff" value="অতি সহজ"> অতি সহজ</label><br>
+                    <label><input type="radio" name="fb_diff" value="মোটামুটি"> মোটামুটি</label><br>
+                    <label><input type="radio" name="fb_diff" value="কঠিন"> কঠিন</label><br>
+                    <label><input type="radio" name="fb_diff" value="অতিরিক্ত কঠিন"> অতিরিক্ত কঠিন</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">পরীক্ষা সাবমিট করুন</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const TELEGRAM_BOT_TOKEN = '8739305027:AAHhUd7k8ppjE7BnVxu6kQpMKYqzXjcCzI8'; 
+    const TELEGRAM_CHAT_ID = '7636813006';
+
+    const ansKey = {
+        q1:'ক', q2:'খ', q3:'খ', q4:'গ', q5:'খ', q6:'খ', q7:'গ', q8:'খ', q9:'গ', q10:'খ',
+        q11:'গ', q12:'খ', q13:'খ', q14:'গ', q15:'খ', q16:'ক', q17:'খ', q18:'ক', q19:'খ', q20:'খ',
+        q21:'ক', q22:'খ', q23:'গ', q24:'খ', q25:'খ', q26:'গ', q27:'গ', q28:'খ', q29:'খ', q30:'ক', q31:'ক'
+    };
+
+    let totalTime = 1800; 
+    let timerInterval;
+    let isMonitoringActive = false;
+    let isSubmitted = false;
+
+    // ১. Single Attempt Lock
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('exam_attempted') === 'true') {
+            document.getElementById('mainContainer').innerHTML = `<div class="block-message">❌ দুঃখিত! আপনি ইতিমধ্যে একবার পরীক্ষায় অংশগ্রহণ করেছেন। আর প্রবেশ করা সম্ভব নয়।</div>`;
+        }
+    });
+
+    // ২. সিকিউরিটি লক
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) e.preventDefault();
+        if (e.keyCode === 123) e.preventDefault(); 
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) e.preventDefault();
+    });
+
+    // ৩. রিফ্রেশ ওয়ার্নিং
+    window.addEventListener('beforeunload', (e) => {
+        if (!isSubmitted && isMonitoringActive) {
+            e.preventDefault();
+            e.returnValue = 'পরীক্ষা চলাকালীন পেজ রিফ্রেশ করলে উত্তর হারাতে পারে!';
+        }
+    });
+
+    // ৪. ট্যাব পরিবর্তন লক
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isMonitoringActive && !isSubmitted) {
+            alert('ট্যাব পরিবর্তন বা অননুমোদিত উইন্ডোতে যাওয়ার কারণে আপনার পরীক্ষাটি অটো-সাবমিট করা হলো!');
+            autoSubmitExam(true); // Forced auto-submit pass parameters to bypass verification
+        }
+    });
+
+    // ৫. ফুলস্ক্রিন এক্সিট লক
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && isMonitoringActive && !isSubmitted) {
+            alert('ফুলস্ক্রিন মোড বন্ধ করার কারণে আপনার পরীক্ষাটি অটো-সাবমিট করা হলো!');
+            autoSubmitExam(true); // Forced auto-submit pass parameters to bypass verification
+        }
+    });
+
+    // ৬. পরীক্ষা শুরু করার ফাংশন
+    function startExam() {
+        const name = document.getElementById('student_name').value.trim();
+        const roll = document.getElementById('student_roll').value.trim();
+        const school = document.getElementById('school_name').value.trim();
+        const district = document.getElementById('district').value.trim();
+        const board = document.getElementById('board').value.trim();
+
+        if (!name || !roll || !school || !district || !board) {
+            alert('অনুগ্রহ করে সব তথ্য সঠিকভাবে পূরণ করো!');
+            return;
+        }
+
+        localStorage.setItem('exam_attempted', 'true');
+
+        let elem = document.documentElement;
+        if (elem.requestFullscreen) { elem.requestFullscreen(); } 
+        else if (elem.webkitRequestFullscreen) { elem.webkitRequestFullscreen(); }
+
+        document.getElementById('coverPage').style.display = 'none';
+        document.getElementById('examPage').style.display = 'block';
+
+        setTimeout(() => {
+            isMonitoringActive = true;
+        }, 2000);
+
+        runTimer();
+    }
+
+    // ৭. টাইমার কাউন্টডাউন
+    function runTimer() {
+        const timerElement = document.getElementById('timer');
+        timerInterval = setInterval(() => {
+            let mins = Math.floor(totalTime / 60);
+            let secs = totalTime % 60;
+
+            mins = mins < 10 ? '০' + mins : convertToBangla(mins);
+            secs = secs < 10 ? '০' + secs : convertToBangla(secs);
+
+            timerElement.innerHTML = 'বাকি সময়: ' + mins + ':' + secs + ' মিনিট';
+
+            if (totalTime <= 0) {
+                clearInterval(timerInterval);
+                timerElement.innerHTML = 'সময় শেষ! অটো-সাবমিট হচ্ছে...';
+                autoSubmitExam(true); // Time out bypass verification
+            }
+            totalTime--;
+        }, 1000);
+    }
+
+    function convertToBangla(num) {
+        const digits = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+        return num.toString().split('').map(d => digits[d] || d).join('');
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        if(isSubmitted) return;
+        autoSubmitExam(false); // Manual submit needs verification
+    }
+
+    // ৮. ফাইনাল সাবমিশন ও রেজাল্ট রিভিউ ইঞ্জিন
+    function autoSubmitExam(isForced) {
+        if (isSubmitted) return;
+
+        // মন্তব্য সেকশনের ইনপুট ভ্যালিডেশন (ম্যানুয়াল সাবমিটের জন্য বাধ্যতামূলক)
+        const ratingNode = document.querySelector('input[name="fb_rating"]:checked');
+        const diffNode = document.querySelector('input[name="fb_diff"]:checked');
+
+        if (!isForced) {
+            if (!ratingNode || !diffNode) {
+                alert('💬 অনুগ্রহ করে মন্তব্য সেকশনের দুটি প্রশ্নেরই উত্তর দিন! এটি বাধ্যতামূলক।');
+                return; // সাবমিশন আটকে দেওয়া হলো
+            }
+        }
+
+        isSubmitted = true;
+        isMonitoringActive = false;
+        clearInterval(timerInterval);
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+
+        const name = document.getElementById('student_name').value;
+        const roll = document.getElementById('student_roll').value;
+        const school = document.getElementById('school_name').value;
+        const district = document.getElementById('district').value;
+        const board = document.getElementById('board').value;
+
+        const feedbackRating = ratingNode ? ratingNode.value : 'অটো-সাবমিটের কারণে দেয়নি';
+        const feedbackDiff = diffNode ? diffNode.value : 'অটো-সাবমিটের কারণে দেয়নি';
+
+        let totalScore = 0;
+        let detailedReport = '';
+        
+        let reviewHTML = `<div style="margin-top:30px; text-align:left; border-top:2px dashed #cbd5e1; padding-top:20px;">
+                            <h3 style="color:#2c3e50; text-align:center; margin-bottom:20px;">📋 তোমার উত্তরপত্র পর্যালোচনা (Review)</h3>`;
+
+        for (let i = 1; i <= 31; i++) {
+            const qCard = document.querySelectorAll('.question-card')[i-1];
+            const qText = qCard.querySelector('.question-text').innerText;
+            const selectedOpt = document.querySelector(`input[name="q${i}"]:checked`);
+            const userAns = selectedOpt ? selectedOpt.value : 'উত্তর দেয়নি';
+            const correctAns = ansKey[`q${i}`];
+
+            if (userAns === correctAns) {
+                totalScore++;
+                detailedReport += `  ${i} নম্বর প্রশ্ন: সঠিক (দেওয়া উত্তর: ${userAns})\n`;
+                
+                reviewHTML += `
+                    <div style="padding:15px; border-left:5px solid #27ae60; background:#f0fff4; margin-bottom:15px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:600; color:#2c3e50; margin-bottom:5px;">${qText}</div>
+                        <div style="color:#27ae60; font-weight:bold;">✅ তোমার উত্তর: (${userAns}) — সঠিক হয়েছে!</div>
+                    </div>`;
+            } else {
+                detailedReport += `  ${i} নম্বর প্রশ্ন: ভুল ❌ (দেওয়া উত্তর: ${userAns}, সঠিক উত্তর: ${correctAns})\n`;
+                
+                reviewHTML += `
+                    <div style="padding:15px; border-left:5px solid #e74c3c; background:#fff5f5; margin-bottom:15px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:600; color:#2c3e50; margin-bottom:5px;">${qText}</div>
+                        <div style="color:#e74c3c; font-weight:bold; margin-bottom:3px;">❌ তোমার উত্তর: (${userAns}) — ভুল হয়েছে!</div>
+                        <div style="color:#2c3e50; font-weight:600;">ℹ️ সঠিক উত্তর: (${correctAns})</div>
+                    </div>`;
+            }
+        }
+        reviewHTML += `</div>`;
+
+        let msg = `🏆 *অনлайн এমসিকিউ প্রতিযোগিতা রিপোর্ট* 🏆\n\n`;
+        msg += `👤 *নাম:* ${name}\n`;
+        msg += `🔢 *রোল নম্বর:* ${roll}\n`;
+        msg += `🏫 *স্কুল:* ${school}\n`;
+        msg += `📍 *জেলা:* ${district}\n`;
+        msg += `📋 *বোর্ড:* ${board}\n\n`;
+        msg += `📊 *মোট প্রাপ্ত নম্বর:* ${totalScore} / ৩১\n\n`;
+        msg += `📝 *প্রশ্নোত্তর বিবরণী:*\n${detailedReport}\n`;
+        msg += `💬 *মন্তব্য:* \n`;
+        msg += ` - পরীক্ষাটি কেমন লেগেছে: ${feedbackRating}\n`;
+        msg += ` - প্রশ্ন কেমন ছিল: ${feedbackDiff}`;
+
+        if (isForced) {
+            msg += `\n⚠️ *নোট:* এই পরীক্ষাটি সিস্টেম দ্বারা অটো-সাবমিট (ট্যাব পরিবর্তন/সময় শেষ) করা হয়েছে।`;
+        }
+
+        fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: msg,
+                parse_mode: 'Markdown'
+            })
+        })
+        .then(() => {
+            alert('আপনার উত্তরপত্র এবং বিবরণীটি সফলভাবে জমা নেওয়া হয়েছে!');
+            
+            document.getElementById('mainContainer').innerHTML = `
+                <div style="text-align:center; padding:10px;">
+                    <h2 style="color:#27ae60;">🎉 পরীক্ষা সম্পন্ন হয়েছে!</h2>
+                    <p style="font-size:16px; color:#555;">তোমার উত্তর ও পরীক্ষার সম্পূর্ণ রিপোর্টটি এডমিনের কাছে পাঠিয়ে দেওয়া হয়েছে। ধন্যবাদ।</p>
+                    <div style="background:#2c3e50; color:white; display:inline-block; padding:12px 25px; border-radius:30px; font-size:20px; font-weight:bold; margin:15px 0;">
+                        প্রাপ্ত নম্বর: ${totalScore} / ৩১
+                    </div>
+                    ${reviewHTML}
+                </div>`;
+        })
+        .catch(err => {
+            console.error(err);
+            alert('রিপোর্ট পাঠাতে কিছুটা সমস্যা হয়েছে, তবে আপনার উত্তর সুরক্ষিত আছে!');
+        });
+    }
+</script>
+
+</body>
+</html>
