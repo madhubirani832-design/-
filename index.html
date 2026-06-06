@@ -53,7 +53,6 @@
             margin: 0; 
         }
 
-        /* --- New Animated Glow Effect for the Title --- */
         .english-title {
             font-size: 32px;
             font-weight: 800;
@@ -107,11 +106,12 @@
     
     <div id="blockPage" style="display: none; text-align: center; padding: 40px 20px;">
         <h2 style="color: #c0392b; margin-bottom: 10px;">❌ প্রবেশ নিষিদ্ধ</h2>
-        <p style="color: #555; font-size: 16px; margin-bottom: 30px;">আপনি ইতিমধ্যে একবার পরীক্ষায় অংশগ্রহণ করেছেন। সাধারণ পরীক্ষার্থীদের জন্য পুনরায় প্রবেশ নিষেধ।</p>
+        <p style="color: #555; font-size: 16px; margin-bottom: 30px;">আপনি ইতিমধ্যে একবার পরীক্ষায় অংশগ্রহণ করেছেন অথবা আপনার পরীক্ষা বাতিল হয়েছে।</p>
         <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; display: inline-block; border: 1px solid #e9ecef; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <h4 style="margin-top:0; color: #2c3e50; font-size: 18px;">🔒 এডমিন প্যানেল</h4>
-            <input type="password" id="admin_password" placeholder="পাসওয়ার্ড দিন" style="padding:12px; width: 220px; border:1px solid #cbd5e1; border-radius:5px; margin-bottom: 15px; text-align: center; font-size: 16px; display: block; margin-left: auto; margin-right: auto;">
-            <button type="button" onclick="adminAuth()" style="padding:12px 20px; background:#2980b9; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight: bold; font-size: 16px; width: 100%; transition: 0.3s;">ডিভাইস আনলক করুন</button>
+            <h4 style="margin-top:0; color: #2c3e50; font-size: 18px;">🔒 ডিভাইস আনলক প্যানেল</h4>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">এডমিন পাসওয়ার্ড অথবা স্টুডেন্ট ওয়ান-টাইম পাসওয়ার্ড দিন</p>
+            <input type="password" id="unlock_password" placeholder="পাসওয়ার্ড লিখুন" style="padding:12px; width: 220px; border:1px solid #cbd5e1; border-radius:5px; margin-bottom: 15px; text-align: center; font-size: 16px; display: block; margin-left: auto; margin-right: auto;">
+            <button type="button" onclick="unlockDevice()" style="padding:12px 20px; background:#2980b9; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight: bold; font-size: 16px; width: 100%; transition: 0.3s;">ডিভাইস আনলক করুন</button>
         </div>
     </div>
 
@@ -162,7 +162,7 @@
             <h3>সাবধানতা:</h3>  
             <ul>  
                 <li>পরীক্ষা শুরু হওয়ার পর কোনোভাবেই পেজ রিফ্রেশ (Refresh) করা যাবে না।</li>  
-                <li>পরীক্ষা চলাকালীন ট্যাব পরিবর্তন করে অন্য কোনো অ্যাপ বা ব্রাউজারে যাওয়া যাবে বিন্দু না।</li>  
+                <li>পরীক্ষা চলাকালীন ট্যাব পরিবর্তন করে অন্য কোনো অ্যাপ বা ব্রাউজারে যাওয়া যাবে না।</li>  
                 <li>স্ক্রিনটি ফুলস্ক্রিন (Fullscreen) মোডে থাকবে, তা থেকে বের হওয়া যাবে না।</li>  
             </ul>  
         </div>  
@@ -273,10 +273,24 @@
 
 <script>
     // --- Security / Obfuscation Zone ---
-    const _bT = atob("ODczOTMwNTAyNzpBQUhoVWQ3azhwcGpFN0JuVnh1NmtRcE1LWXF6WGpjQ3pJOA=="); // botToken
-    const _cI = atob("NzYzNjgxMzAwNg=="); // chatId
-    const _aP = atob("NTIzM25va2lh"); // adminPassword
+    const _bT = atob("ODczOTMwNTAyNzpBQUhoVWQ3azhwcGpFN0JuVnh1NmtRcE1LWXF6WGpjQ3pJOA=="); 
+    const _cI = atob("NzYzNjgxMzAwNg=="); 
+    const _aP = atob("VGVjbm8ta2MxQCMxMjM="); // Admin Password Base64 (Tecno-kc1@#123)
     
+    // 100 Random One-Time Student Passwords
+    const studentOTP = [
+        "7A3B9X", "2M8C4V", "9K1N6P", "5X7R2T", "4L9W3M", "8V2P5K", "1C6N8H", "3B7T4F", "6M5X9D", "2P4R7L",
+        "9T1V8C", "5N3B6X", "7K8M2P", "4R6T9V", "1X5N3C", "8B2K7M", "3P9R4T", "6V1X8N", "2C7B5K", "9M4P1R",
+        "5T8V3X", "7N2C6B", "4K9M1P", "1R5T8V", "8X3N7C", "3B6K2M", "6P1R4T", "2V8X5N", "9C3B7K", "5M9P2R",
+        "7T4V1X", "4N8C3B", "1K5M9P", "8R2T6V", "3X7N4C", "6B1K8M", "2P5R9T", "9V3X7N", "5C8B2K", "7M4P1R",
+        "4T9V5X", "1N6C3B", "8K2M7P", "3R5T9V", "6X1N8C", "2B7K4M", "9P3R6T", "5V8X2N", "7C4B9K", "4M1P5R",
+        "1T6V8X", "8N3C7B", "3K9M2P", "6R4T1V", "2X7N5C", "9B2K8M", "5P9R3T", "7V4X1N", "4C8B6K", "1M5P9R",
+        "8T2V7X", "3N6C4B", "6K1M8P", "2R7T5V", "9X3N1C", "5B8K4M", "7P2R9T", "4V6X3N", "1C9B5K", "8M4P2R",
+        "3T7V9X", "6N2C8B", "2K5M1P", "9R8T4V", "5X3N7C", "7B6K2M", "4P1R8T", "1V9X5N", "8C4B3K", "3M7P2R",
+        "6T5V1X", "2N9C8B", "9K4M5P", "5R2T7V", "7X6N3C", "4B1K8M", "1P8R4T", "8V3X9N", "3C7B5K", "6M2P1R",
+        "2T9V4X", "9N5C3B", "5K8M7P", "7R1T6V", "4X3N2C", "1B9K8M", "8P4R5T", "3V7X1N", "6C2B9K", "2M5P8R"
+    ];
+
     // Encrypted Answer Array
     const answerKeys = ["ক", "খ", "গ", "ঘ"];
     const _cA = JSON.parse(atob("WzEsIDAsIDMsIDEsIDEsIDEsIDEsIDIsIDIsIDMsIDEsIDEsIDEsIDAsIDIsIDEsIDEsIDEsIDIsIDEsIDIsIDIsIDEsIDAsIDAsIDEsIDIsIDMsIDEsIDIsIDEsIDAsIDEsIDIsIDAsIDEsIDAsIDAsIDEsIDAsIDEsIDEsIDEsIDIsIDBd"));
@@ -290,7 +304,7 @@
         `ii ও iii (মাইটোকন্ড্রিয়া, নিউক্লিওলাস): মনেরা রাজ্যের আদি কোষী জীবে মেমব্রেন বা পর্দাবৃত কোনো অঙ্গাণু (যেমন মাইটোকন্ড্রিয়া) এবং সুগঠিত নিউক্লিয়াস থাকে চিহ্নিত নিউক্লিয়াস থাকে না।`,
         `সুতার আকৃতি: ইংরেজি 'Filament' শব্দটির আক্ষরিক অর্থই হলো অতি সূক্ষ্ম তন্তু বা সুতার মতো লম্বা চেইন বা গঠন।`,
         `ii ও iii (প্রটিস্টা ও ফানজাই): প্রটিস্টা এবং ফানজাই উভয় রাজ্যেই এককোষী ও বহুকোষী জীব দেখা যায়। কিন্তু মনেরা কেবলই এককোষী হয়।`,
-        `প্রটিস্টা: প্রটিস্টা রাজ্যের জীবে কোনো জটিল টিস্যুতন্ত্র থাকে ওয়েবসাইটে থাকে না এবং এদের জাইগোট থেকে কোনো বহুকোষী ভ্রূণ (Embryo) গঠিত হয় না।`,
+        `প্রটিস্টা: প্রটিস্টা রাজ্যের জীবে কোনো জটিল টিস্যুতন্ত্র থাকে ওয়েবসাইটে থাকে না এবং এদের জাইগোট থেকে কোনো বহুকোষী ভ্রূণ (Embryo) গঠিত হয় গঠন হয় না।`,
         `ফানজাই: ফানজাই বা ছত্রাক জাতীয় জীবের কোষপ্রাচীর সেলুলোজের পরিবর্তে 'কাইটিন' (Chitin) নামক শক্ত শর্করা দিয়ে তৈরি হয়।`,
         `i, ii ও iii (সবগুলোই): প্রটিস্টা রাজ্যের পুষ্টিপ্রক্রিয়ায় এরা পরিবেশ থেকে তরল খাদ্য শোষণ করতে পারে, সালোকসংশ্লেষণ করতে পারে এবং খাদ্য গিলেও খেতে পারে।`,
         `অ্যানাইসোগ্যামাস: উদ্ভিদের যৌন জননে সাধারণত দুটি ভিন্ন আকার, আকৃতি বা চলনক্ষমতার গ্যামেটের (পুং ও স্ত্রী গ্যামেট) মিলন ঘটে, যা মূলত অ্যানাইসোগ্যামাস প্রকৃতির।`,
@@ -307,7 +321,7 @@
         `চিকিৎসাশাস্ত্র: আধুনিক শ্রেণীবিন্যাসের জনক ক্যারোলাস লিনিয়াস মূলত চিকিৎসাশাস্ত্র (Medicine) নিয়ে পড়াশোনা করেন এবং উচ্চতর ডিগ্রি লাভ করেন।`,
         `অ্যারিস্টটল: প্রাচীন গ্রিক বিজ্ঞানী অ্যারিস্টটল প্রথম প্রাণীদের স্বভাব ও বৈশিষ্ট্য নিয়ে বিজ্ঞানসম্মত আলোচনা শুরু করেন, তাই তাঁকে প্রাণিবিজ্ঞানের জনক বলা হয়।`,
         `i (প্রটিস্টাকে ২টি ভাগে ভাগ): ২০০৪ সালে বিজ্ঞানী টমাস কেভলিয়ার-স্মিথ জীবজগৎকে ৬টি রাজ্যে ভাগ করেন এবং এর মধ্যে প্রটিস্টাকে দুটি ভাগে বিভক্ত করেছিলেন।`,
-        `i ও ii: দ্বিপদ নামকরণের প্রধান লক্ষ্য হলো বিশ্বজুড়ে একটি জীবের একটিই অনন্য নাম নিশ্চিত করা। ল্যাটিন মৃত ভাষা হওয়ায় এর ব্যাকরণ পরিবর্তন করা হয় মোহ।`,
+        `i ও ii: দ্বিপদ নামকরণের প্রধান লক্ষ্য হলো বিশ্বজুড়ে একটি জীবের একটিই অনন্য নাম নিশ্চিত করা। ল্যাটিন মৃত ভাষা হওয়ায় এর ব্যাকরণ পরিবর্তন করা হয় না।`,
         `এন্টোমোলজি: জীববিজ্ঞানের ফলিত শাখা 'Entomology' (কীটতত্ত্ব)-তে কীটপতঙ্গের জীবন ইতিহাস নিয়ে আলোচনা করা হয়।`,
         `ডায়াটম: ডায়াটম হলো প্রটিস্টা রাজ্যের জলজ শৈবাল। এদের কোষে ক্লোরোপ্লাস্ট থাকে, যার সাহায্যে এরা ফটোসিনথেটিক পদ্ধতিতে খাদ্য তৈরি করে।`,
         `ii ও iii (ঝিল্লি বিহীন, দুটি সেন্ট্রিওল ধারণ করে): সেন্ট্রোজোম হলো প্রাণী কোষের একটি ঝিল্লিবিহীন অঞ্চল, যার ভেতরে দুটি সেন্ট্রিওল থাকে।`,
@@ -334,7 +348,7 @@
         return answerKeys[_cA[questionIndex - 1]];
     }
 
-    // স্টেট ভেরিয়েবল (পরীক্ষার সময় ৪০ মিনিট = ২৪০০ সেকেন্ড)
+    // স্টেট ভেরিয়েবল
     let totalExamTime = 2400; 
     let timeLeft = totalExamTime; 
     let timerInterval;
@@ -345,8 +359,8 @@
     const adminUnlockedKey = "admin_unlocked";
     const examTakenKey = "exam_taken_bio_chap1";
     const offlineQueueKey = "telegram_report_queue";
+    const usedOTPKey = "used_student_passwords";
 
-    // নাম্বারকে বাংলায় রূপান্তরের ফাংশন
     const toBengaliDigits = num => num.toString().split("").map(digit => {
         return {"0":"০","1":"১","2":"২","3":"৩","4":"৪","5":"৫","6":"৬","7":"৭","8":"৮","9":"৯"}[digit] || digit;
     }).join("");
@@ -359,7 +373,7 @@
     }
 
     function syncOfflineReports() {
-        if (!navigator.onLine) return; // ইন্টারনেট না থাকলে কিছুই করবে না
+        if (!navigator.onLine) return; 
         
         let queue = JSON.parse(localStorage.getItem(offlineQueueKey) || '[]');
         if (queue.length === 0) return;
@@ -380,14 +394,11 @@
         localStorage.setItem(offlineQueueKey, JSON.stringify(remainingQueue));
     }
 
-    // পেজ লোড এবং ইন্টারনেট কানেকশন আসলেই সিঙ্ক করার চেষ্টা করবে
     window.addEventListener("online", syncOfflineReports);
-    // প্রতি ১৫ সেকেন্ড পরপর চেক করবে ব্যাকগ্রাউন্ডে
     setInterval(syncOfflineReports, 15000); 
 
-    // পেজ লোড হওয়ার সময় চেক
     window.addEventListener("DOMContentLoaded", () => {
-        syncOfflineReports(); // ঢোকার সাথে সাথে আটকে থাকা মেসেজ পাঠাবে
+        syncOfflineReports(); 
         
         if (localStorage.getItem(adminUnlockedKey) === "1") {
             document.getElementById("coverPage").style.display = "block";
@@ -399,17 +410,39 @@
         }
     });
 
-    // এডমিন অথেন্টিকেশন
-    window.adminAuth = function() {
-        if (document.getElementById("admin_password").value === _aP) {
+    // আনলক অথেন্টিকেশন (এডমিন + স্টুডেন্ট)
+    window.unlockDevice = function() {
+        let pass = document.getElementById("unlock_password").value.trim();
+        if(!pass) return alert("পাসওয়ার্ড দিন!");
+
+        // ১. এডমিন চেক
+        if (pass === _aP) {
             localStorage.setItem(adminUnlockedKey, "1");
             localStorage.removeItem(examTakenKey);
             document.getElementById("blockPage").style.display = "none";
             document.getElementById("coverPage").style.display = "block";
-            alert("✅ এডমিন অ্যাক্সেস সফল! আপনার ডিভাইসটি এই পরীক্ষার জন্য স্থায়ীভাবে আনলক করা হয়েছে।");
-        } else {
-            alert("❌ ভুল পাসওয়ার্ড!");
+            return alert("✅ এডমিন অ্যাক্সেস সফল! আপনার ডিভাইসটি এই পরীক্ষার জন্য স্থায়ীভাবে আনলক করা হয়েছে।");
+        } 
+
+        // ২. স্টুডেন্ট ওয়ান-টাইম পাসওয়ার্ড চেক
+        let usedPasses = JSON.parse(localStorage.getItem(usedOTPKey) || "[]");
+
+        if (studentOTP.includes(pass)) {
+            if (usedPasses.includes(pass)) {
+                return alert("❌ এই পাসওয়ার্ডটি ইতিমধ্যে একবার ব্যবহার করা হয়েছে। এটি দিয়ে আর পরীক্ষা দেওয়া যাবে না। নতুন পাসওয়ার্ড সংগ্রহ করো।");
+            } else {
+                usedPasses.push(pass);
+                localStorage.setItem(usedOTPKey, JSON.stringify(usedPasses));
+                
+                localStorage.setItem(adminUnlockedKey, "1");
+                localStorage.removeItem(examTakenKey);
+                document.getElementById("blockPage").style.display = "none";
+                document.getElementById("coverPage").style.display = "block";
+                return alert("✅ পাসওয়ার্ড সফল! তুমি নতুন করে আবার পরীক্ষা দিতে পারবে।");
+            }
         }
+
+        alert("❌ ভুল পাসওয়ার্ড!");
     };
 
     // --- এন্টি-চিট মেকানিজম ---
@@ -470,7 +503,6 @@
         startTimer();
     };
 
-    // টাইমার ফাংশন
     function startTimer() {
         let timerDisplay = document.getElementById("timer");
         timerInterval = setInterval(() => {
@@ -491,13 +523,11 @@
         }, 1000);
     }
 
-    // ফর্ম সাবমিট ইভেন্ট
     window.handleFormSubmit = function(e) {
         e.preventDefault();
         if (!isSubmitted) submitExam(false);
     };
 
-    // মূল সাবমিট ফাংশন ও রেজাল্ট প্রসেসিং
     function submitExam(isAutoSubmit) {
         if (isSubmitted) return;
 
@@ -515,12 +545,10 @@
         let finalTimeLeft = Math.max(0, timeLeft);
         let timeTakenSeconds = totalExamTime - finalTimeLeft;
         
-        // সময় লেগেছে
         let takenMin = Math.floor(timeTakenSeconds / 60);
         let takenSec = timeTakenSeconds % 60;
         let timeTakenText = `${toBengaliDigits(takenMin)} মিনিট ${toBengaliDigits(takenSec)} সেকেন্ড`;
         
-        // বাকি সময়
         let leftMin = Math.floor(finalTimeLeft / 60);
         let leftSec = finalTimeLeft % 60;
         let timeLeftText = `${toBengaliDigits(leftMin)} মিনিট ${toBengaliDigits(leftSec)} সেকেন্ড`;
@@ -531,7 +559,11 @@
 
         let score = 0;
         let summaryText = "";
-        let resultHTML = '<div style="margin-top:30px; border-top:2px dashed #cbd5e1; padding-top:20px;"><h3 style="font-family: \'Hind Siliguri\', sans-serif; font-size:24px;">📋 উত্তরপত্র পর্যালোচনা</h3>';
+        let resultHTML = '';
+
+        if(!isAutoSubmit) {
+            resultHTML = '<div style="margin-top:30px; border-top:2px dashed #cbd5e1; padding-top:20px;"><h3 style="font-family: \'Hind Siliguri\', sans-serif; font-size:24px;">📋 উত্তরপত্র পর্যালোচনা</h3>';
+        }
 
         for (let i = 1; i <= 45; i++) {
             let card = document.querySelectorAll(".question-card")[i - 1];
@@ -550,22 +582,35 @@
             if (userVal === correctAnsVal) {
                 score++;
                 summaryText += ` ${i} নং: ✅ সঠিক (${userText})\n`;
-                resultHTML += `<div style="padding:15px; border-left:5px solid #27ae60; background:#f0fff4; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    <div style="font-weight:bold; font-size:16px;">${qText}</div>
-                    <div style="color:#27ae60; font-weight:bold; margin-top:8px;">✅ তোমার উত্তর: ${userText}</div>
-                    <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #a3e4d7; font-size:14px; color:#145a32;"><b>💡 ব্যাখ্যা:</b> ${expText}</div>
-                </div>`;
+                if(!isAutoSubmit) {
+                    resultHTML += `<div style="padding:15px; border-left:5px solid #27ae60; background:#f0fff4; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:bold; font-size:16px;">${qText}</div>
+                        <div style="color:#27ae60; font-weight:bold; margin-top:8px;">✅ তোমার উত্তর: ${userText}</div>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #a3e4d7; font-size:14px; color:#145a32;"><b>💡 ব্যাখ্যা:</b> ${expText}</div>
+                    </div>`;
+                }
             } else {
                 summaryText += ` ${i} নং: ❌ ভুল (দিয়েছে: ${userText}, সঠিক: ${correctText})\n`;
-                resultHTML += `<div style="padding:15px; border-left:5px solid #e74c3c; background:#fdf2f0; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                    <div style="font-weight:bold; font-size:16px;">${qText}</div>
-                    <div style="color:#c0392b; font-weight:bold; margin-top:8px;">❌ তোমার উত্তর: ${userText}</div>
-                    <div style="color:#27ae60; font-weight:bold; margin-top:4px;">✅ সঠিক উত্তর: ${correctText}</div>
-                    <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #f5b7b1; font-size:14px; color:#7b241c;"><b>💡 ব্যাখ্যা:</b> ${expText}</div>
-                </div>`;
+                if(!isAutoSubmit) {
+                    resultHTML += `<div style="padding:15px; border-left:5px solid #e74c3c; background:#fdf2f0; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:bold; font-size:16px;">${qText}</div>
+                        <div style="color:#c0392b; font-weight:bold; margin-top:8px;">❌ তোমার উত্তর: ${userText}</div>
+                        <div style="color:#27ae60; font-weight:bold; margin-top:4px;">✅ সঠিক উত্তর: ${correctText}</div>
+                        <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #f5b7b1; font-size:14px; color:#7b241c;"><b>💡 ব্যাখ্যা:</b> ${expText}</div>
+                    </div>`;
+                }
             }
         }
-        resultHTML += "</div>";
+        
+        if(!isAutoSubmit) {
+            resultHTML += "</div>";
+        } else {
+            // সাসপেন্ড বা বাতিল হওয়া স্টুডেন্টদের জন্য কাস্টম মেসেজ (উত্তর ও ব্যাখ্যা লুকানো থাকবে)
+            resultHTML = `<div style="margin-top:25px; padding:20px; background:#fadbd8; color:#c0392b; border-radius:8px; border-left:6px solid #e74c3c; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h3 style="margin-top:0; font-size: 20px;">⚠️ পরীক্ষা বাতিল</h3>
+                <p style="font-size: 16px; margin-bottom: 0;">নিয়ম ভঙ্গ (ট্যাব পরিবর্তন, ফুলস্ক্রিন থেকে বের হওয়া বা পেজ রিফ্রেশ) করার কারণে তোমার পরীক্ষা অটো-সাবমিট হয়ে গেছে। <b>তাই তোমার জন্য প্রশ্ন ও সঠিক উত্তরের পর্যালোচনা বন্ধ করে দেওয়া হয়েছে।</b></p>
+            </div>`;
+        }
 
         const escapeMD = (str) => str.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&');
 
@@ -602,7 +647,6 @@
                 </div>`;
         };
 
-        // Send to Telegram
         if (navigator.onLine) {
             fetch(`https://api.telegram.org/bot${_bT}/sendMessage`, {
                 method: "POST",
