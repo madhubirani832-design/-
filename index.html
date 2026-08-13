@@ -1,0 +1,708 @@
+<!DOCTYPE html>  
+<html lang="bn">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯 - বাংলা সাহিত্য</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("X212lbnvw6OPiMmPr");
+       })();
+    </script>
+
+    <style>  
+        * {  
+            -webkit-user-select: none;  
+            -moz-user-select: none;  
+            -ms-user-select: none;  
+            user-select: none;  
+            -webkit-touch-callout: none;  
+        }  
+        input[type="text"], input[type="number"], select, input[type="password"] {  
+            -webkit-user-select: text;  
+            -moz-user-select: text;  
+            -ms-user-select: text;  
+            user-select: text;  
+        }  
+        body {  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial;  
+            background-color: #f4f7f6;  
+            color: #333;  
+            line-height: 1.6;  
+            margin: 0;  
+            padding: 20px;  
+        }  
+        .container {  
+            max-width: 700px;  
+            background: #fff;  
+            margin: 0 auto;  
+            padding: 30px;  
+            border-radius: 10px;  
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);  
+        }  
+        .header-container { text-align: center; margin-bottom: 25px; }  
+        
+        .main-title { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            color: #2c3e50; 
+            font-size: 32px; 
+            font-weight: 700; 
+            margin: 0 0 5px 0; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }  
+        .sub-title { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            color: #e67e22; 
+            font-size: 22px; 
+            font-weight: 700; 
+            margin: 0; 
+        }
+
+        .english-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e3799;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            animation: cosmicGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes cosmicGlow {
+            from { text-shadow: 0 0 5px rgba(52, 152, 219, 0.4), 0 0 10px rgba(52, 152, 219, 0.4); }
+            to { text-shadow: 0 0 10px rgba(41, 128, 185, 0.8), 0 0 20px rgba(0, 210, 255, 0.8), 0 0 30px rgba(0, 210, 255, 0.6); }
+        }
+        
+        .instruction-box { background: #fff; border: 1px solid #ddd; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; }  
+        .instruction-box h3 { margin-top: 0; color: #2c3e50; text-align: center; font-size: 22px; }  
+        .instruction-box ul { padding-left: 20px; }  
+        .instruction-box li { margin-bottom: 8px; }  
+        .warning-text { color: #c0392b; font-weight: bold; text-align: center; margin-top: 15px; padding: 10px; background: #fadbd8; border-radius: 5px; }  
+        .timer-box { position: sticky; top: 10px; background: #e74c3c; color: white; text-align: center; padding: 12px; font-weight: bold; font-size: 18px; border-radius: 5px; margin-bottom: 20px; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }  
+        .info-section { background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 25px; }  
+        .info-group { margin-bottom: 15px; }  
+        .info-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 15px; }  
+        .info-group input[type="text"], .info-group input[type="number"], .info-group select { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; background-color: #fff; }  
+        .enter-btn { display: block; width: 100%; background: #27ae60; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; }  
+        .enter-btn:hover { background: #219653; }  
+        .proceed-btn { display: block; width: 100%; background: #2980b9; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; margin-top: 20px; }  
+        .proceed-btn:hover { background: #2471a3; }  
+        .question-card { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }  
+        .question-text { font-weight: 600; font-size: 16px; margin-bottom: 12px; line-height: 1.5; }  
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }  
+        @media(max-width: 500px) { .options { grid-template-columns: 1fr; } }  
+        .option-label { background: #f8f9fa; padding: 12px; border-radius: 4px; cursor: pointer; border: 1px solid #e9ecef; transition: 0.2s; display: flex; align-items: center; }  
+        .option-label:hover { background: #e9ecef; }  
+        .option-label input { margin-right: 10px; transform: scale(1.1); }  
+        .feedback-section { background: #f9f9f9; padding: 20px; border-radius: 5px; margin-top: 30px; border-left: 5px solid #2ecc71; }  
+        .feedback-group { margin-bottom: 15px; }  
+        .feedback-group p { font-weight: bold; margin-bottom: 8px; }  
+        .submit-btn { display: block; width: 100%; background: #2c3e50; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 20px; }  
+
+        /* Fullscreen block overlay */
+        #fsOverlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh;
+        }
+        #fsOverlay h2 { color: #e74c3c; font-size: 28px; margin-bottom: 10px; }
+        #fsOverlay button { background: #27ae60; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+    </style>  
+</head>  
+<body>  
+
+<div id="fsOverlay">
+    <h2>⚠️ আপনি ফুলস্ক্রিন থেকে বের হয়েছেন!</h2>
+    <p id="fsWarningText" style="font-size: 18px; color: #f1c40f;"></p>
+    <p>পরীক্ষা চালিয়ে যেতে পুনরায় ফুলস্ক্রিন করুন।</p>
+    <button onclick="resumeFullscreen()">ফুলস্ক্রিন করুন</button>
+</div>
+
+<div class="container" id="mainContainer">  
+    
+    <div id="blockPage" style="display: none; text-align: center; padding: 40px 20px;">
+        <h2 style="color: #c0392b; margin-bottom: 10px;">❌ প্রবেশ নিষিদ্ধ</h2>
+        <p style="color: #555; font-size: 16px; margin-bottom: 30px;">আপনি ইতিমধ্যে একবার পরীক্ষায় অংশগ্রহণ করেছেন অথবা আপনার পরীক্ষা বাতিল হয়েছে।</p>
+        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; display: inline-block; border: 1px solid #e9ecef; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4 style="margin-top:0; color: #2c3e50; font-size: 18px;">🔒 ডিভাইস আনলক প্যানেল</h4>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">এডমিন পাসওয়ার্ড অথবা স্টুডেন্ট ওয়ান-টাইম পাসওয়ার্ড দিন</p>
+            <input type="password" id="unlock_password" placeholder="পাসওয়ার্ড লিখুন" style="padding:12px; width: 220px; border:1px solid #cbd5e1; border-radius:5px; margin-bottom: 15px; text-align: center; font-size: 16px; display: block; margin-left: auto; margin-right: auto;">
+            <button type="button" onclick="unlockDevice()" style="padding:12px 20px; background:#2980b9; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight: bold; font-size: 16px; width: 100%; transition: 0.3s;">ডিভাইস আনলক করুন</button>
+        </div>
+    </div>
+
+    <div id="coverPage">  
+        <div class="header-container">  
+            <h1 class="english-title">𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯</h1>  
+            <h2 class="main-title" style="font-size: 26px;">অনলাইন কুইজ প্রতিযোগিতা 🎯</h2>  
+        </div>  
+        <div class="info-section">  
+            <div class="info-group">  
+                <label>👤 নাম:</label>  
+                <input type="text" id="student_name" placeholder="তোমার নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🔢 রোল নম্বর:</label>  
+                <input type="number" id="student_roll" placeholder="তোমার রোল নম্বর লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🏫 স্কুলের নাম:</label>  
+                <input type="text" id="school_name" placeholder="তোমার স্কুলের নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>📍 জেলা:</label>  
+                <input type="text" id="district" placeholder="জেলার নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>📋 বোর্ড:</label>  
+                <input type="text" id="board" placeholder="শিক্ষা বোর্ডের নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🎭 কোন গ্রুপ:</label>  
+                <select id="student_group">  
+                    <option value="" disabled selected>তোমার গ্রুপ নির্বাচন করো</option>  
+                    <option value="Science">Science (বিজ্ঞান)</option>  
+                    <option value="Arts">Arts (মানবিক)</option>  
+                    <option value="Commerce">Commerce (ব্যবসায় শিক্ষা)</option>  
+                </select>  
+            </div>  
+            <div class="info-group">  
+                <label>👥 কোন গ্রুপ থেকে পরীক্ষায় অংশগ্রহণ করেছেন?</label>  
+                <select id="join_group">  
+                    <option value="" disabled selected>নির্বাচন করুন</option>  
+                    <option value="𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯">𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯</option>  
+                    <option value="𝐓𝐀𝐑𝐆𝐄𝐓 𝐀+ 𝐒𝐒𝐂 𝟐𝟎𝟐𝟖">𝐓𝐀𝐑𝐆𝐄𝐓 𝐀+ 𝐒𝐒𝐂 𝟐𝟎𝟐𝟖</option>  
+                </select>  
+            </div> 
+            <button type="button" class="enter-btn" onclick="goToInstructions()">পরবর্তী ধাপে যান</button>  
+        </div>  
+    </div>  
+
+    <div id="instructionPage" style="display: none;">  
+        <div class="instruction-box">
+            <h3 style="color: #c0392b;">📢 জরুরি নোটিশ: কুইজ প্রতিযোগিতার নিয়মাবলী ও নিরাপত্তা ব্যবস্থা</h3>
+            <p>প্রিয় শিক্ষার্থীবৃন্দ,<br>আমাদের অনলাইন কুইজ প্রতিযোগিতায় সর্বোচ্চ স্বচ্ছতা বজায় রাখার জন্য সিস্টেমে কঠোর নিরাপত্তা বা 'এন্টি-চিট' (Anti-Cheat) মেকানিজম যুক্ত করা হয়েছে। পরীক্ষায় অংশগ্রহণ করার আগে নিচের নির্দেশনাবলী খুব ভালোভাবে পড়ে নেওয়ার জন্য বলা হচ্ছে।</p>
+            
+            <h4 style="color: #2980b9; margin-top: 20px;">📱 পরীক্ষা শুরুর আগে অত্যন্ত জরুরি প্রস্তুতি:</h4>
+            <p><strong>'Do Not Disturb' (DND) অন করুন:</strong> পরীক্ষা শুরু করার আগেই আপনার ফোনের Do Not Disturb (DND) বা Silent Mode অন করে নিন। পরীক্ষা চলাকালীন কোনো ফোন কল, মেসেজ বা অ্যাপের নোটিফিকেশন স্ক্রিনে ভেসে উঠলে (বা ভুলবশত সেখানে ক্লিক লাগলে) সিস্টেম তা 'ট্যাব পরিবর্তন' হিসেবে ধরে নিতে পারে। ফলে আপনার পরীক্ষা স্বয়ংক্রিয়ভাবে বাতিল হয়ে যাওয়ার ঝুঁকি থাকবে।</p>
+
+            <h4 style="color: #c0392b; margin-top: 20px;">🚫 যেসব কারণে পরীক্ষা তাৎক্ষণিক বাতিল (Auto-Submit) হয়ে যাবে:</h4>
+            <ul style="color: #333; font-weight: normal; list-style-type: decimal; margin-bottom: 20px;">
+                <li><strong>ট্যাব বা উইন্ডো পরিবর্তন:</strong> পরীক্ষা চলাকালীন ব্রাউজারের ট্যাব পরিবর্তন করলে, পেজ মিনিমাইজ করলে বা অন্য কোনো অ্যাপ ওপেন করলে।</li>
+                <li><strong>ফুলস্ক্রিন থেকে বের হওয়া:</strong> পরীক্ষা শুরু হওয়ার পর স্ক্রিনটি স্বয়ংক্রিয়ভাবে ফুলস্ক্রিন হয়ে যাবে। ব্যাক বাটন চেপে বা অন্য কোনোভাবে ফুলস্ক্রিন মোড থেকে বের হওয়ার চেষ্টা করলে (সর্বোচ্চ ৫ বার সতর্ক করা হবে, ৬ষ্ঠ বার বাতিল)।</li>
+                <li><strong>পেজ রিফ্রেশ বা রিলোড করা:</strong> পরীক্ষা চলাকালীন ভুলবশত বা ইচ্ছাকৃতভাবে পেজ রিফ্রেশ (Refresh) করলে বা ব্যাক (Back) বাটনে চাপ দিলে।</li>
+                <li><strong>ফোন স্ক্রিন লক করা:</strong> পরীক্ষা চলাকালীন পাওয়ার বাটন চেপে স্ক্রিন লক করলে বা ডিসপ্লে টাইম-আউট হয়ে স্ক্রিন অফ হয়ে গেলে।</li>
+            </ul>
+
+            <h4 style="color: #27ae60; margin-top: 20px;">🔒 সিস্টেমে যুক্ত থাকা নিরাপত্তা ফিচারসমূহ (Security Features):</h4>
+            <ul style="color: #333; font-weight: normal; list-style-type: decimal; margin-bottom: 20px;">
+                <li><strong>রাইট-ক্লিক ও কপি-পেস্ট বন্ধ:</strong> মাউসের Right-Click সম্পূর্ণ নিষ্ক্রিয়। কোনো প্রশ্ন বা অপশন সিলেক্ট বা কপি (Ctrl+C) করা যাবে অমর।</li>
+                <li><strong>কিবোর্ড শর্টকাট ব্লক:</strong> পেজ সেভ (Ctrl+S), সোর্স কোড দেখা (Ctrl+U) বা অল-সিলেক্ট (Ctrl+A) করার শর্টকাট কাজ করবে না।</li>
+                <li><strong>ডেভেলপার টুলস রেস্ট্রিকশন:</strong> F12 বা Ctrl+Shift+I/J/C চেপে ইন্সপেক্ট এলিমেন্ট (Inspect Element) বা কনসোল খোলার কোনো সুযোগ নেই।</li>
+                <li><strong>সিঙ্গেল এন্ট্রি সিস্টেম:</strong> একজন পরীক্ষার্থী একটি ডিভাইস থেকে কেবল একবারই পরীক্ষা দিতে পারবে। পরীক্ষা সাবমিট বা ব্লক হয়ে গেলে সাধারণ লিংকের মাধ্যমে দ্বিতীয়বার প্রবেশের সুযোগ নেই।</li>
+                <li><strong>অফলাইন ট্র্যাকিং সিস্টেম:</strong> পরীক্ষা চলাকালীন ইন্টারনেট সংযোগ বিচ্ছিন্ন হলেও সিস্টেম সচল থাকবে এবং ডাটা সেভ হয়ে থাকবে। ইন্টারনেট ফিরে আসার সাথে সাথে তা এডমিন প্যানেলে সেন্ড হয়ে যাবে। তাই ডাটা অফ করে অসদুপায় অবলম্বনের সুযোগ নেই।</li>
+            </ul>
+
+            <div class="warning-text">
+                ⚠️ সতর্কতা: নিয়ম ভঙ্গের কারণে পরীক্ষা বাতিল হলে, নিয়ম ভঙ্গের নির্দিষ্ট কারণসহ একটি অটো-সাবমিট রিপোর্ট সরাসরি এডমিন ℛυԃɾσ 𝒦υɱαɾ-এর কাছে পৌঁছে যাবে।
+            </div>
+            
+            <p style="margin-top: 15px;"><strong>📌 বিশেষ দ্রষ্টব্য:</strong> যদি ভুলবশত বা কোনো কারিগরি ত্রুটির কারণে কারো পরীক্ষা সাসপেন্ড হয়ে যায়, তবে সে এডমিন-এর কাছে রিকোয়েস্ট করতে পারবে। এডমিন বিষয়টি যাচাই-বাছাই করে সন্তুষ্ট হলে তাকে পুনরায় একটি সুযোগ প্রদান করতে পারেন।</p>
+            
+            <p style="text-align: center; font-weight: bold; color: #2980b9; margin-top: 20px;">সততাই সর্বোৎকৃষ্ট পন্থা। নিজের মেধার উপর বিশ্বাস রাখো। <br>সবার জন্য শুভকামনা! 🎯</p>
+        </div>
+        <button type="button" class="proceed-btn" onclick="startExam()">আমি বুঝতে পেরেছি, পরীক্ষা শুরু করুন</button>  
+    </div>  
+
+    <div id="examPage" style="display: none;">  
+        <div class="header-container">  
+            <h1 class="main-title">𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯</h1>  
+            <h2 class="sub-title">বাংলা সাহিত্য (গদ্য: নিরীহ বাঙালি, পদ্য: সেইদিন এই মাঠ)</h2>  
+        </div>
+        
+        <div class="timer-box" id="timer">বাকি সময়: ২৫:০০ মিনিট</div>  
+        
+        <form id="quizForm" onsubmit="handleFormSubmit(event)">  
+            
+            <div id="questionsContainer">
+                <script>
+                    const questionsData = [
+                        { q: "১. 'সেইদিন এই মাঠ' কবিতার মূলভাব কি?", opts: ["ক) প্রকৃতির সৌন্দর্য নশ্বর", "খ) মানব সভ্যতার পরিণতি", "গ) মৃত্যুচেতনা", "ঘ) প্রকৃতির সৌন্দর্য চিরস্থায়ী"] },
+                        { q: "২. 'নিরীহ বাঙালি' প্রবন্ধে সুস্বাদু খাবার কোনটি?", opts: ["ক) সজিনা", "খ) রসমালাই", "গ) নবনীত", "ঘ) আম"] },
+                        { q: "৩. বেগম রোকেয়া কার অনুপ্রেরণায় সাহিত্যচর্চা শুরু করেন?", opts: ["ক) স্বামী", "খ) পিতা", "গ) বড় ভাই", "ঘ) বড় বোন"] },
+                        { q: "৪. 'সেইদিন এই মাঠ' কবিতায় বর্ণিত ফুলের নাম কী?", opts: ["ক) কদম", "খ) চালতা", "গ) গোলাপ", "ঘ) শিউলি"] },
+                        { q: "৫. বাঙালি কী নিয়ে গঠিত হয়েছে?", opts: ["ক) সরলতা", "খ) ভীরুতা", "গ) কঠোরতা", "ঘ) স্নিগ্ধতা"] },
+                        { q: "৬. M.R.A.C কোন বিষয়ের ডিগ্রি?", opts: ["ক) ডাক্তারি", "খ) কারিগরি", "গ) শিল্প", "ঘ) কৃষি"] },
+                        { q: "৭. 'সেইদিন এই মাঠ' কবিতায় ক্ষয়িষ্ণু কী?", opts: ["ক) প্রকৃতি", "খ) মানুষ", "গ) সভ্যতা", "ঘ) শিশির"] },
+                        { q: "৮. বেগম রোকেয়ার স্বামীর বাড়ি কোথায়?", opts: ["ক) রংপুর", "খ) বিহার", "গ) উড়িষ্যা", "ঘ) কলকাতা"] },
+                        { q: "৯. নিচের উদ্দীপকটি পড়ে প্রশ্নটির উত্তর দাও:<br>দেখা হলেই মিষ্ট অতি<br>মুখের ভাব শিষ্ট অতি<br>অলস দেহ ক্লিষ্ট গতি<br>গৃহের প্রতি টান।<br>উদ্দীপকটিতে 'নিরীহ বাঙালি' প্রবন্ধে উল্লেখিত বাঙালি চরিত্রে যে দিকটি ফুটে উঠেছে তা হলো—<br>i. অলসতা<br>ii. সদাচার<br>iii. ঘরকুনো<br>নিচের কোনটি সঠিক?", opts: ["ক) i ও ii", "খ) i ও iii", "গ) ii ও iii", "ঘ) i, ii ও iii"] },
+                        { q: "১০. 'দিব্যাঙ্গনা' শব্দের অর্থ—", opts: ["ক) স্বর্গের রূপসী", "খ) কোমলাঙ্গী নারী", "গ) দিব্য অঙ্গ আছে যে নারীর", "ঘ) প্রশংসিত নারী"] },
+                        { q: "১১. লেখিকা বাঙালিকে কিসের তরলতার সাথে তুলনা করেছেন?", opts: ["ক) সুপ্তির", "খ) নবনীর", "গ) সলিলের", "ঘ) যূথিকার"] },
+                        { q: "১২. জীবনানন্দ দাশ কোন ধরনের কবি ছিলেন?", opts: ["ক) নাগরিক কবি", "খ) প্রকৃতির কবি", "গ) বাস্তববাদী কবি", "ঘ) আধুনিক জীবন চেতনার কবি"] },
+                        { q: "১৩. ভারতের পুরুষ সমাজে বাঙালি কী?", opts: ["ক) মূর্তিমান কাব্য", "খ) পুরুষিকা", "গ) নায়িকা", "ঘ) সাজসজ্জা"] },
+                        { q: "১৪. 'সেইদিন এই মাঠ' কবিতায় লক্ষ্মীপেচার কণ্ঠে কী ধ্বনিত হয়?", opts: ["ক) মঙ্গলবার্তা", "খ) সংগীত", "গ) সুর", "ঘ) লোকগীতি"] },
+                        { q: "১৫. আমাদের কাব্য সাহিত্যে কোন রসের প্রাধান্য বেশি?", opts: ["ক) শান্ত রস", "খ) বীররস", "গ) করুণ রস", "ঘ) হাস্য রস"] },
+                        { q: "১৬. বাঙালির স্বভাবে কী বেশি?", opts: ["ক) কোমলতা", "খ) ভীরুতা", "গ) সরলতা", "ঘ) সাহসিকতা"] },
+                        { q: "১৭. 'আমরা দুর্বল নিরীহ বাঙালি' — এখানে দুর্বল বলতে কী বোঝানো হয়েছে?", opts: ["ক) শারীরিকভাবে দুর্বল", "খ) সামাজিকভাবে দুর্বল", "গ) মানসিকভাবে দুর্বল", "ঘ) শক্তিহীন"] },
+                        { q: "১৮. 'সেইদিন এই মাঠ' কবিতায় কীসের মৃত্যু নেই?", opts: ["ক) শিশিরের", "খ) লক্ষ্মীপেচার", "গ) ফুলের", "ঘ) জগতের সৌন্দর্যের"] },
+                        { q: "১৯. 'নিরীহ বাঙালি' প্রবন্ধে লেখিকা বাঙালির কোন বিষয়টি তুলে ধরেছেন?", opts: ["ক) দৃষ্টিভঙ্গি", "খ) বৈশিষ্ট্য", "গ) গুণাবলি", "ঘ) পরিচয়"] },
+                        { q: "২০. 'মাল্যবান' কোন ধরনের রচনা?", opts: ["ক) কাব্যগ্রন্থ", "খ) উপন্যাস", "গ) প্রবন্ধ", "ঘ) ছোটগল্প"] },
+                        { q: "২১. ভারতবর্ষকে একটি সরোবর মনে করলে বাঙালি কী?", opts: ["ক) নায়িকা", "খ) অপসরা", "গ) পদ্মিনী", "ঘ) শাপলা"] },
+                        { q: "২২. 'সৌকুমার্য' শব্দের অর্থ কী?", opts: ["ক) আনন্দ", "খ) সৌন্দর্য", "গ) বন", "ঘ) আকাশ"] },
+                        { q: "২৩. 'সেইদিন এই মাঠ স্তব্ধ হবে নাকো জানি'— এখানে 'মাঠ' বলতে কবি কী বোঝিয়েছেন?", opts: ["ক) সভ্যতা", "খ) সৌন্দর্য", "গ) মাঠ", "ঘ) প্রকৃতি"] },
+                        { q: "২৪. আমাদের গৃহিণীগণ কোন বিষয়ে অগ্রণী?", opts: ["ক) আলস্যতায়", "খ) পরনিন্দা চর্চায়", "গ) রূপচর্চায়", "ঘ) পাশ-বিক্রয় ব্যবসায়"] },
+                        { q: "২৫. কুসুমকুমারী দাশ কী ছিলেন?", opts: ["ক) স্বভাব কবি", "খ) কবি", "গ) প্রাবন্ধিক", "ঘ) নাট্যকার"] },
+                        { q: "২৬. 'নিরীহ বাঙালি' প্রবন্ধে স্থূল ভুঁড়ি বাঙালির কোনটিকে বোঝায়?", opts: ["ক) সরলতা", "খ) স্নিগ্ধতা", "গ) অলসতা", "ঘ) কঠোরতা"] },
+                        { q: "২৭. রোকেয়া সাখাওয়াত হোসেনের সাহিত্য রচনার মূল সুর কী?", opts: ["ক) সমাজ সংস্কার করা", "খ) নারী জাতির মূল্যায়ন", "গ) নারীজাগরণ", "ঘ) ধর্মীয় গোঁড়ামির বিরুদ্ধে সোচ্চার"] },
+                        { q: "২৮. 'সেইদিন এই মাঠ' কবিতায় চরের কাছে কী লেগেছে?", opts: ["ক) খেয়া নৌকা", "খ) ডিঙি নৌকা", "গ) মায়াবী নৌকা", "ঘ) জনপদ"] },
+                        { q: "২৯. 'নিরীহ বাঙালি' প্রবন্ধে 'মস্তিষ্ক উর্বর' বলতে লেখিকা কী বুঝিয়েছেন?", opts: ["ক) মেধার বিকাশ ঘটানো", "খ) মাথা খাটানো", "গ) বিদ্যা জাহির করা", "ঘ) সৃজনশীল হওয়া"] },
+                        { q: "৩০. 'সোনার স্বপ্নের সাধ পৃথিবীতে কবে আর ঝরে' বলতে কবি জীবনানন্দ দাশ কী বুঝিয়েছেন?", opts: ["ক) প্রকৃতির সৌন্দর্যের নিত্যতা", "খ) প্রকৃতির রহস্যময়তা", "গ) মানুষের শাশ্বত সৌন্দর্যবোধ", "ঘ) নান্দনিক সৌন্দর্যের চিরন্তনতা"] },
+                        { q: "৩১. বিষয়বস্তুর দিক দিয়ে 'নিরীহ বাঙালি' কোন ধরনের রচনা?", opts: ["ক) প্রহসন", "খ) রম্য রচনা", "গ) বিদ্রুপ", "ঘ) ব্যঙ্গাত্মক"] },
+                        { q: "৩২. আমাদের বাজারে কোন রঙের পিত্তলের অলংকার পাওয়া যায়?", opts: ["ক) সোনালী", "খ) রাঙা", "গ) কালো", "ঘ) লাল"] },
+                        { q: "৩৩. রোকেয়া সাখাওয়াত হোসেনের মতে পাশ ক্রেতা কে?", opts: ["ক) বর", "খ) শ্বশুর", "গ) ভীরু বাঙালি", "ঘ) ভারতবাসী"] },
+                        { q: "৩৪. 'আমি চলে যাবো বলে' — 'সেইদিন এই মাঠ' কবিতার এই বাক্যটিতে কী প্রকাশিত হয়েছে?", opts: ["ক) মৃত্যুচেতনা", "খ) অভিমান", "গ) দুঃখ", "ঘ) ঐশ্বরিক চেতনা"] },
+                        { q: "৩৫. জীবনানন্দ দাশের কবিতার মৌলিক প্রেরণা কোনটি?", opts: ["ক) স্বদেশপ্রেম", "খ) প্রকৃতি প্রীতি", "গ) প্রাকৃতিক সৌন্দর্য", "ঘ) প্রকৃতির সৌন্দর্য"] }
+                    ];
+
+                    const valMap = ["ক", "খ", "গ", "ঘ"];
+                    let htmlContent = "";
+                    questionsData.forEach((item, index) => {
+                        htmlContent += `<div class="question-card">
+                            <div class="question-text">${item.q}</div>
+                            <div class="options">`;
+                        item.opts.forEach((opt, oIndex) => {
+                            htmlContent += `<label class="option-label"><input type="radio" name="q${index+1}" value="${valMap[oIndex]}" onclick="lockQuestion(this, ${index+1})"> ${opt}</label>`;
+                        });
+                        htmlContent += `</div></div>`;
+                    });
+                    document.write(htmlContent);
+                </script>
+            </div>
+
+            <div class="feedback-section">  
+                <h3>💬 মন্তব্য সেকশন (বাধ্যতামূলক)</h3>  
+                <div class="feedback-group">  
+                    <p>পরীক্ষাটি কেমন লাগলো— *</p>  
+                    <label><input type="radio" name="fb_rating" value="অনেক ভালো"> অনেক ভালো</label><br>  
+                    <label><input type="radio" name="fb_rating" value="ভালো"> ভালো</label><br>  
+                    <label><input type="radio" name="fb_rating" value="মোটামুটি"> মোটামুটি</label><br>  
+                    <label><input type="radio" name="fb_rating" value="খারাপ"> খারাপ</label>  
+                </div>  
+                <div class="feedback-group">  
+                    <p>পরীক্ষার প্রশ্ন কেমন ছিল — *</p>  
+                    <label><input type="radio" name="fb_diff" value="সহজ"> সহজ</label><br>  
+                    <label><input type="radio" name="fb_diff" value="অতি সহজ"> অতি সহজ</label><br>  
+                    <label><input type="radio" name="fb_diff" value="মোটামুটি"> মোটামুটি</label><br>  
+                    <label><input type="radio" name="fb_diff" value="কঠিন"> কঠিন</label><br>  
+                    <label><input type="radio" name="fb_diff" value="অতিরিক্ত কঠিন"> অতিরিক্ত কঠিন</label>  
+                </div>  
+            </div>  
+
+            <button type="submit" class="submit-btn" id="submitBtn">পরীক্ষা সাবমিট করুন</button>  
+        </form>  
+    </div>  
+</div>  
+
+<script>
+    const _aP = atob("VGVjbm8ta2MxQCMxMjM="); // Admin Password
+    
+    // Encrypted Answer Array for security (Base64)
+    const _eA = "WzMsMiwwLDEsMywxLDIsMSwxLDAsMiwzLDEsMCwyLDEsMiwzLDEsMSwyLDEsMywwLDAsMiwyLDAsMiwwLDMsMSwxLDAsMV0=";
+    const _cA = JSON.parse(atob(_eA));
+    const answerKeys = ["ক", "খ", "গ", "ঘ"];
+    
+    function getCorrectAnswer(questionIndex) {
+        return answerKeys[_cA[questionIndex - 1]];
+    }
+
+    // 100 Random One-Time Student Passwords
+    const studentOTP = [
+        "7A3B9X", "2M8C4V", "9K1N6P", "5X7R2T", "4L9W3M", "8V2P5K", "1C6N8H", "3B7T4F", "6M5X9D", "2P4R7L",
+        "9T1V8C", "5N3B6X", "7K8M2P", "4R6T9V", "1X5N3C", "8B2K7M", "3P9R4T", "6V1X8N", "2C7B5K", "9M4P1R",
+        "5T8V3X", "7N2C6B", "4K9M1P", "1R5T8V", "8X3N7C", "3B6K2M", "6P1R4T", "2V8X5N", "9C3B7K", "5M9P2R",
+        "7T4V1X", "4N8C3B", "1K5M9P", "8R2T6V", "3X7N4C", "6B1K8M", "2P5R9T", "9V3X7N", "5C8B2K", "7M4P1R",
+        "4T9V5X", "1N6C3B", "8K2M7P", "3R5T9V", "6X1N8C", "2B7K4M", "9P3R6T", "5V8X2N", "7C4B9K", "4M1P5R",
+        "1T6V8X", "8N3C7B", "3K9M2P", "6R4T1V", "2X7N5C", "9B2K8M", "5P9R3T", "7V4X1N", "4C8B6K", "1M5P9R",
+        "8T2V7X", "3N6C4B", "6K1M8P", "2R7T5V", "9X3N1C", "5B8K4M", "7P2R9T", "4V6X3N", "1C9B5K", "8M4P2R",
+        "3T7V9X", "6N2C8B", "2K5M1P", "9R8T4V", "5X3N7C", "7B6K2M", "4P1R8T", "1V9X5N", "8C4B3K", "3M7P2R",
+        "6T5V1X", "2N9C8B", "9K4M5P", "5R2T7V", "7X6N3C", "4B1K8M", "1P8R4T", "8V3X9N", "3C7B5K", "6M2P1R",
+        "2T9V4X", "9N5C3B", "5K8M7P", "7R1T6V", "4X3N2C", "1B9K8M", "8P4R5T", "3V7X1N", "6C2B9K", "2M5P8R"
+    ];
+
+    window.lockQuestion = function(radioElem, qNum) {
+        let name = "q" + qNum;
+        let radios = document.querySelectorAll(`input[name="${name}"]`);
+        radios.forEach(r => {
+            r.disabled = true;
+            r.parentElement.style.cursor = "not-allowed";
+            r.parentElement.style.opacity = "0.7";
+        });
+    };
+
+    let totalExamTime = 1500; // 25 Minutes
+    let timeLeft = totalExamTime; 
+    let timerInterval;
+    let monitoringActive = false;
+    let isSubmitted = false;
+    let fullscreenExits = 0;
+
+    const adminUnlockedKey = "admin_unlocked_bangla_v1";
+    const examTakenKey = "exam_taken_bangla_v1";
+    const usedOTPKey = "used_student_passwords_bangla_v1";
+    const unlockMethodKey = "unlock_method_bangla_v1"; // NEW: Track unlock method
+
+    const toBengaliDigits = num => num.toString().split("").map(digit => {
+        return {"0":"০","1":"১","2":"২","3":"৩","4":"৪","5":"৫","6":"৬","7":"৭","8":"৮","9":"৯"}[digit] || digit;
+    }).join("");
+
+    window.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem(adminUnlockedKey) === "1") {
+            document.getElementById("coverPage").style.display = "block";
+        } else if (localStorage.getItem(examTakenKey) === "1") {
+            document.getElementById("coverPage").style.display = "none";
+            document.getElementById("blockPage").style.display = "block";
+        } else {
+            // First time loading without block
+            localStorage.setItem(unlockMethodKey, "First Attempt (Regular)");
+            document.getElementById("coverPage").style.display = "block";
+        }
+    });
+
+    window.unlockDevice = function() {
+        let pass = document.getElementById("unlock_password").value.trim();
+        if(!pass) return alert("পাসওয়ার্ড দিন!");
+
+        if (pass === _aP) {
+            localStorage.setItem(adminUnlockedKey, "1");
+            localStorage.removeItem(examTakenKey);
+            localStorage.setItem(unlockMethodKey, "Admin Password"); // Track Admin usage
+            document.getElementById("blockPage").style.display = "none";
+            document.getElementById("coverPage").style.display = "block";
+            return alert("✅ এডমিন অ্যাক্সেস সফল! আপনার ডিভাইসটি এই পরীক্ষার জন্য স্থায়ীভাবে আনলক করা হয়েছে।");
+        } 
+
+        let usedPasses = JSON.parse(localStorage.getItem(usedOTPKey) || "[]");
+
+        if (studentOTP.includes(pass)) {
+            if (usedPasses.includes(pass)) {
+                return alert("❌ এই পাসওয়ার্ডটি ইতিমধ্যে একবার ব্যবহার করা হয়েছে। এটি দিয়ে আর পরীক্ষা দেওয়া যাবে না। নতুন পাসওয়ার্ড সংগ্রহ করো।");
+            } else {
+                usedPasses.push(pass);
+                localStorage.setItem(usedOTPKey, JSON.stringify(usedPasses));
+                
+                localStorage.setItem(adminUnlockedKey, "1");
+                localStorage.removeItem(examTakenKey);
+                localStorage.setItem(unlockMethodKey, "Student OTP"); // Track Student OTP usage
+                document.getElementById("blockPage").style.display = "none";
+                document.getElementById("coverPage").style.display = "block";
+                return alert("✅ পাসওয়ার্ড সফল! তুমি নতুন করে আবার পরীক্ষা দিতে পারবে।");
+            }
+        }
+
+        alert("❌ ভুল পাসওয়ার্ড!");
+    };
+
+    // Anti-Cheat: Disable Right Click and Shortcuts
+    document.addEventListener("contextmenu", e => {
+        if(monitoringActive) e.preventDefault();
+    }); 
+    document.addEventListener("keydown", e => {
+        if (!monitoringActive) return;
+        if (e.ctrlKey && ["c", "u", "s", "a"].includes(e.key.toLowerCase())) e.preventDefault();
+        if (e.keyCode === 123) e.preventDefault(); 
+        if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) e.preventDefault(); 
+    });
+
+    // Anti-Cheat: Tab switch & Close tracking
+    window.addEventListener("beforeunload", e => {
+        if (!isSubmitted && monitoringActive) {
+            sendTelegramReport("Student attempted to reload/close the tab during exam.", "পেজ রিফ্রেশ বা ক্লোজ করা");
+            e.preventDefault();
+            e.returnValue = "";
+        }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden && monitoringActive && !isSubmitted) {
+            alert("⚠️ ট্যাব পরিবর্তন বা পেজ মিনিমাইজ করার কারণে পরীক্ষা স্বয়ংক্রিয়ভাবে বাতিল হয়ে সাবমিট হচ্ছে!");
+            submitExam(true, 'ট্যাব পরিবর্তন বা পেজ মিনিমাইজ করা');
+        }
+    });
+
+    // Anti-Cheat: Fullscreen tracking
+    document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement && monitoringActive && !isSubmitted) {
+            fullscreenExits++;
+            if(fullscreenExits >= 6) {
+                alert("⚠️ আপনি সর্বোচ্চ ৫ বার ফুলস্ক্রিন থেকে বের হয়েছেন! আপনার পরীক্ষা বাতিল করা হলো।");
+                submitExam(true, 'সর্বোচ্চ (৬ বার) ফুলস্ক্রিন মোড থেকে বের হওয়া');
+            } else {
+                document.getElementById("fsWarningText").innerText = `সতর্কতা (${fullscreenExits}/5): ফুলস্ক্রিন থেকে বের হওয়া নিষেধ!`;
+                document.getElementById("fsOverlay").style.display = "block";
+            }
+        }
+    });
+
+    window.resumeFullscreen = function() {
+        let docElement = document.documentElement;
+        if (docElement.requestFullscreen) {
+            docElement.requestFullscreen().then(() => {
+                document.getElementById("fsOverlay").style.display = "none";
+            }).catch(() => { alert("ফুলস্ক্রিন এক্সেস দিন!"); });
+        } else if (docElement.webkitRequestFullscreen) {
+            docElement.webkitRequestFullscreen();
+            document.getElementById("fsOverlay").style.display = "none";
+        }
+    };
+
+    window.goToInstructions = function() {
+        const fields = ["student_name", "student_roll", "school_name", "district", "board", "student_group", "join_group"];
+        for (let field of fields) {
+            if (!document.getElementById(field).value.trim()) {
+                return alert("সব তথ্য পূরণ করো!");
+            }
+        }
+        document.getElementById("coverPage").style.display = "none";
+        document.getElementById("instructionPage").style.display = "block";
+        window.scrollTo(0, 0);
+    };
+
+    window.startExam = function() {
+        localStorage.setItem(examTakenKey, "1"); 
+        localStorage.removeItem(adminUnlockedKey); 
+        
+        let docElement = document.documentElement;
+        if (docElement.requestFullscreen) {
+            docElement.requestFullscreen();
+        } else if (docElement.webkitRequestFullscreen) {
+            docElement.webkitRequestFullscreen();
+        }
+
+        document.getElementById("instructionPage").style.display = "none";
+        document.getElementById("examPage").style.display = "block";
+        window.scrollTo(0, 0);
+
+        setTimeout(() => { monitoringActive = true; }, 2000);
+        startTimer();
+    };
+
+    function startTimer() {
+        let timerDisplay = document.getElementById("timer");
+        timerInterval = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+
+            let minStr = minutes < 10 ? "০" + toBengaliDigits(minutes) : toBengaliDigits(minutes);
+            let secStr = seconds < 10 ? "০" + toBengaliDigits(seconds) : toBengaliDigits(seconds);
+
+            timerDisplay.innerHTML = `বাকি সময়: ${minStr}:${secStr} মিনিট`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerDisplay.innerHTML = "সময় শেষ!";
+                submitExam(true, 'সময় শেষ');
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    window.handleFormSubmit = function(e) {
+        e.preventDefault();
+        if (!isSubmitted) submitExam(false);
+    };
+
+    function sendTelegramReport(summary, suspendReason) {
+        const botToken = "8702123578:AAEMD76CASwhPx7vhKFUBYZKNJ2yj-IAdLM";
+        const chatId = "7636813006";
+        
+        let sName = document.getElementById("student_name").value || "N/A";
+        let sRoll = document.getElementById("student_roll").value || "N/A";
+        let sGroup = document.getElementById("student_group").value || "N/A";
+        let jGroup = document.getElementById("join_group").value || "N/A";
+        let sSchool = document.getElementById("school_name").value || "N/A";
+        let sBoard = document.getElementById("board").value || "N/A";
+        
+        // Fetch Unlock Method from LocalStorage
+        let unlockMethod = localStorage.getItem(unlockMethodKey) || "First Attempt (Regular)";
+        
+        let message = `📝 *SSC 28 Exam Warriors - Exam Report*\n\n` +
+                      `👤 *Name:* ${sName}\n` +
+                      `🔢 *Roll:* ${sRoll}\n` +
+                      `🏫 *School:* ${sSchool}\n` +
+                      `📋 *Board:* ${sBoard}\n` +
+                      `🎭 *Student Group:* ${sGroup}\n` +
+                      `👥 *Joined From:* ${jGroup}\n` +
+                      `🔐 *Access Mode:* ${unlockMethod}\n\n` +
+                      `📊 *Status:* ${suspendReason === false ? "✅ Successfully Submitted" : "❌ Auto-Submitted/Suspended"}\n`;
+        
+        if (suspendReason) {
+            message += `⚠️ *Reason:* ${suspendReason}\n`;
+        }
+
+        message += `\n📋 *Quick Summary:*\n${summary}`;
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        
+        if(navigator.sendBeacon) {
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('text', message);
+            formData.append('parse_mode', 'Markdown');
+            navigator.sendBeacon(url, formData);
+        } else {
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
+            }).catch(() => {});
+        }
+    }
+
+    function submitExam(isAutoSubmit, suspendReason = false) {
+        if (isSubmitted) return;
+
+        let rating = document.querySelector('input[name="fb_rating"]:checked');
+        let difficulty = document.querySelector('input[name="fb_diff"]:checked');
+
+        if (!isAutoSubmit && (!rating || !difficulty)) {
+            return alert("অনুগ্রহ করে মন্তব্য সেকশনটি পূরণ করুন!");
+        }
+
+        isSubmitted = true;
+        monitoringActive = false;
+        clearInterval(timerInterval);
+        document.getElementById("fsOverlay").style.display = "none";
+        
+        let finalTimeLeft = Math.max(0, timeLeft);
+        let timeTakenSeconds = totalExamTime - finalTimeLeft;
+        
+        let takenMin = Math.floor(timeTakenSeconds / 60);
+        let takenSec = timeTakenSeconds % 60;
+        let timeTakenText = `${toBengaliDigits(takenMin)} মিনিট ${toBengaliDigits(takenSec)} সেকেন্ড`;
+        
+        let leftMin = Math.floor(finalTimeLeft / 60);
+        let leftSec = finalTimeLeft % 60;
+        let timeLeftText = `${toBengaliDigits(leftMin)} মিনিট ${toBengaliDigits(leftSec)} সেকেন্ড`;
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+
+        let score = 0;
+        let summaryText = ""; // এখানে শুধুমাত্র ভুল উত্তরগুলো সেভ করা হবে
+        let resultHTML = '';
+
+        if(!isAutoSubmit) {
+            resultHTML = '<div style="margin-top:30px; border-top:2px dashed #cbd5e1; padding-top:20px;"><h3 style="font-family: \'Hind Siliguri\', sans-serif; font-size:24px;">📋 উত্তরপত্র পর্যালোচনা</h3>';
+        }
+
+        for (let i = 1; i <= 35; i++) {
+            let card = document.querySelectorAll(".question-card")[i - 1];
+            let qText = card.querySelector(".question-text").innerHTML;
+            
+            let selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+            let userVal = selectedOption ? selectedOption.value : null;
+            let userText = selectedOption ? selectedOption.parentElement.innerText.trim() : "(উত্তর দেয়নি)";
+            
+            let correctAnsVal = getCorrectAnswer(i);
+            let correctInput = card.querySelector(`input[name="q${i}"][value="${correctAnsVal}"]`);
+            let correctText = correctInput ? correctInput.parentElement.innerText.trim() : `(${correctAnsVal})`;
+
+            if (userVal === correctAnsVal) {
+                score++;
+                if(!isAutoSubmit) {
+                    resultHTML += `<div style="padding:15px; border-left:5px solid #27ae60; background:#f0fff4; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:bold; font-size:16px;">${qText}</div>
+                        <div style="color:#27ae60; font-weight:bold; margin-top:8px;">✅ তোমার উত্তর: ${userText}</div>
+                    </div>`;
+                }
+            } else {
+                summaryText += `${i} নং: ❌ ভুল (সঠিক: ${correctText})\n`;
+                if(!isAutoSubmit) {
+                    resultHTML += `<div style="padding:15px; border-left:5px solid #e74c3c; background:#fdf2f0; margin-bottom:15px; border-radius:5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                        <div style="font-weight:bold; font-size:16px;">${qText}</div>
+                        <div style="color:#c0392b; font-weight:bold; margin-top:8px;">❌ তোমার উত্তর: ${userText}</div>
+                        <div style="color:#27ae60; font-weight:bold; margin-top:4px;">✅ সঠিক উত্তর: ${correctText}</div>
+                    </div>`;
+                }
+            }
+        }
+        
+        if(!isAutoSubmit) {
+            resultHTML += "</div>";
+        } else {
+            resultHTML = `<div style="margin-top:25px; padding:20px; background:#fadbd8; color:#c0392b; border-radius:8px; border-left:6px solid #e74c3c; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h3 style="margin-top:0; font-size: 20px;">⚠️ পরীক্ষা বাতিল</h3>
+                <p style="font-size: 16px; margin-bottom: 5px;">নিয়ম ভঙ্গ করার কারণে তোমার পরীক্ষা অটো-সাবমিট হয়ে গেছে।</p>
+                <p style="font-size: 14px; color: #7b241c; margin-bottom: 0;"><b>কারণ:</b> ${suspendReason}</p>
+                <p style="font-size: 16px; margin-top: 10px;"><b>তাই তোমার জন্য প্রশ্ন ও সঠিক উত্তরের পর্যালোচনা বন্ধ করে দেওয়া হয়েছে।</b></p>
+            </div>`;
+        }
+
+        let finalSummaryText = summaryText !== "" ? summaryText : "সবগুলো উত্তর সঠিক হয়েছে! 🎉";
+
+        const escapeMD = (str) => str.replace(/[_*`\[]/g, '');
+
+        let sName = escapeMD(document.getElementById("student_name").value);
+        let sRoll = escapeMD(document.getElementById("student_roll").value);
+        let sSchool = escapeMD(document.getElementById("school_name").value);
+        let sDist = escapeMD(document.getElementById("district").value);
+        let sBoard = escapeMD(document.getElementById("board").value);
+        let sGroup = document.getElementById("student_group").value;
+        let jGroup = document.getElementById("join_group").value;
+
+        let fullSchoolInfo = `${sSchool} (Group: ${jGroup})`;
+
+        const emailParams = {
+            name: sName,
+            roll: sRoll,
+            school: fullSchoolInfo,
+            district: sDist,
+            board: sBoard,
+            group: sGroup,
+            score: score + " / 35",
+            timeTaken: timeTakenText,
+            isAutoSubmit: isAutoSubmit ? `হ্যাঁ (${suspendReason})` : "না",
+            summaryText: finalSummaryText
+        };
+
+        sendTelegramReport(`*Score:* ${score}/35\n*Time Taken:* ${timeTakenText}\n\n*ভুল উত্তরসমূহ:*\n${finalSummaryText}`, suspendReason);
+
+        const resultUIRender = () => {
+            window.scrollTo(0, 0);
+            document.getElementById("mainContainer").innerHTML = `
+                <div style="text-align:center;">
+                    <h2 style="font-family: 'Hind Siliguri', sans-serif; font-size:32px; color:#2c3e50;">🎉 পরীক্ষা সম্পন্ন!</h2>
+                    <div style="background:#2c3e50; color:white; padding:12px 25px; border-radius:30px; display:inline-block; font-size:22px; font-weight:bold; margin-bottom:10px; font-family: 'Hind Siliguri', sans-serif;">প্রাপ্ত নম্বর: ${toBengaliDigits(score)} / ৩৫</div>
+                    <br>
+                    <div style="background:#f39c12; color:white; padding:8px 20px; border-radius:20px; display:inline-block; font-size:16px; font-weight:bold; margin-bottom:10px;">⏳ সময় লেগেছে: ${timeTakenText}</div>
+                    <br>
+                    <div style="background:#e74c3c; color:white; padding:8px 20px; border-radius:20px; display:inline-block; font-size:16px; font-weight:bold; margin-bottom:20px;">⏱️ বাকি সময়: ${timeLeftText}</div>
+                    <div style="text-align: left;">${resultHTML}</div>
+                    
+                    <div style="text-align:center; margin-top: 30px; background: #f8f9fa; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <a href="https://m.me/cm/AbYEXWF8QzrBw0Aj/?send_source=cm%3Acopy_invite_link" target="_blank" style="display:inline-block; background:#2980b9; color:#fff; text-decoration:none; padding:12px 20px; border-radius:5px; font-weight:bold; font-size: 16px; transition:0.3s; box-shadow:0 4px 6px rgba(41,128,185,0.3);">
+                            কমিউনিটিতে জয়েন হতে ক্লিক করো: 𝕊𝕊ℂ '𝟚𝟠 ❘ 𝔼𝕩𝕒𝕞 𝕎𝕒𝕣𝕣𝕚𝕠𝕣𝕤 🎯
+                        </a>
+                    </div>
+                </div>`;
+        };
+
+        if (navigator.onLine) {
+            emailjs.send("service_s1fkqyp", "template_yjrl1cd", emailParams)
+                .then(function() {
+                    resultUIRender();
+                }, function() {
+                    alert("⚠️ রিপোর্ট ইমেইলে পাঠাতে সাময়িক সমস্যা হয়েছে! তবে এডমিনের কাছে টেলিগ্রামে রিপোর্ট পাঠানো হয়েছে।");
+                    resultUIRender();
+                });
+        } else {
+            alert("⚠️ ইন্টারনেট কানেকশন নেই! তোমার রেজাল্ট সার্ভারে পাঠানো সম্ভব হয়নি। দয়া করে ইন্টারনেট চালু করে আবার চেষ্টা করো।");
+            resultUIRender();
+        }
+    }
+</script>
+</body>  
+</html>
