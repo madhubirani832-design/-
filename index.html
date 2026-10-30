@@ -1,0 +1,795 @@
+<!DOCTYPE html>  
+<html lang="bn">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>𝕊𝕊ℂ | ᗩSᗷ - General Knowledge & Out-of-Textbook Mega Quiz</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("X212lbnvw6OPiMmPr");
+       })();
+    </script>
+
+    <style>  
+        * {  
+            -webkit-user-select: none;  
+            -moz-user-select: none;  
+            -ms-user-select: none;  
+            user-select: none;  
+            -webkit-touch-callout: none;  
+        }  
+        input[type="text"], input[type="number"], select, input[type="password"] {  
+            -webkit-user-select: text;  
+            -moz-user-select: text;  
+            -ms-user-select: text;  
+            user-select: text;  
+        }  
+        body {  
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial;  
+            background-color: #f4f7f6;  
+            color: #333;  
+            line-height: 1.6;  
+            margin: 0;  
+            padding: 20px;  
+        }  
+        .container {  
+            max-width: 700px;  
+            background: #fff;  
+            margin: 0 auto;  
+            padding: 30px;  
+            border-radius: 10px;  
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);  
+        }  
+        .header-container { text-align: center; margin-bottom: 25px; }  
+        
+        .main-title { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            color: #2c3e50; 
+            font-size: 30px; 
+            font-weight: 700; 
+            margin: 0 0 5px 0; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }  
+        .sub-title { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            color: #e67e22; 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin: 0; 
+        }
+
+        .english-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e3799;
+            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            animation: cosmicGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes cosmicGlow {
+            from { text-shadow: 0 0 5px rgba(52, 152, 219, 0.4), 0 0 10px rgba(52, 152, 219, 0.4); }
+            to { text-shadow: 0 0 10px rgba(41, 128, 185, 0.8), 0 0 20px rgba(0, 210, 255, 0.8), 0 0 30px rgba(0, 210, 255, 0.6); }
+        }
+        
+        .instruction-box { background: #fff; border: 1px solid #ddd; padding: 25px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; }  
+        .instruction-box h3 { margin-top: 0; color: #2c3e50; text-align: center; font-size: 22px; }  
+        .instruction-box ul { padding-left: 20px; }  
+        .instruction-box li { margin-bottom: 8px; }  
+        .warning-text { color: #c0392b; font-weight: bold; text-align: center; margin-top: 15px; padding: 10px; background: #fadbd8; border-radius: 5px; }  
+        
+        .timer-box { 
+            position: sticky; 
+            top: 10px; 
+            background: #27ae60; 
+            color: white; 
+            text-align: center; 
+            padding: 12px; 
+            font-weight: bold; 
+            font-size: 18px; 
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            z-index: 1000; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+            transition: background 0.5s ease; 
+        }  
+        @keyframes blinkWarning {
+            0% { background-color: #c0392b; color: white; }
+            50% { background-color: #ffcccc; color: #c0392b; }
+            100% { background-color: #c0392b; color: white; }
+        }
+        .blink-warning {
+            animation: blinkWarning 1s infinite;
+        }
+
+        .info-section { background: #f9f9f9; padding: 25px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 25px; }  
+        .info-group { margin-bottom: 15px; }  
+        .info-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 15px; }  
+        .info-group input[type="text"], .info-group input[type="number"], .info-group select { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; background-color: #fff; }  
+        .enter-btn { display: block; width: 100%; background: #27ae60; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; }  
+        .enter-btn:hover { background: #219653; }  
+        .proceed-btn { display: block; width: 100%; background: #2980b9; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s; margin-top: 20px; }  
+        .proceed-btn:hover { background: #2471a3; }  
+        .question-card { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #eee; }  
+        .question-text { font-weight: 600; font-size: 16px; margin-bottom: 12px; line-height: 1.5; }  
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }  
+        @media(max-width: 500px) { .options { grid-template-columns: 1fr; } }  
+        .option-label { background: #f8f9fa; padding: 12px; border-radius: 4px; cursor: pointer; border: 1px solid #e9ecef; transition: 0.2s; display: flex; align-items: center; }  
+        .option-label:hover { background: #e9ecef; }  
+        .option-label input { margin-right: 10px; transform: scale(1.1); }  
+        .feedback-section { background: #f9f9f9; padding: 20px; border-radius: 5px; margin-top: 30px; border-left: 5px solid #2ecc71; }  
+        .feedback-group { margin-bottom: 15px; }  
+        .feedback-group p { font-weight: bold; margin-bottom: 8px; }  
+        .submit-btn { display: block; width: 100%; background: #2c3e50; color: white; border: none; padding: 15px; font-size: 18px; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 20px; }  
+
+        #fsOverlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); z-index: 99999; color: white; text-align: center; padding-top: 20vh;
+        }
+        #fsOverlay h2 { color: #e74c3c; font-size: 28px; margin-bottom: 10px; }
+        #fsOverlay button { background: #27ae60; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+    </style>  
+</head>  
+<body>  
+
+<div id="fsOverlay">
+    <h2>⚠️ আপনি ফুলস্ক্রিন থেকে বের হয়েছেন!</h2>
+    <p id="fsWarningText" style="font-size: 18px; color: #f1c40f;"></p>
+    <p>পরীক্ষা চালিয়ে যেতে পুনরায় ফুলস্ক্রিন করুন।</p>
+    <button onclick="resumeFullscreen()">ফুলস্ক্রিন করুন</button>
+</div>
+
+<div class="container" id="mainContainer">  
+    
+    <div id="blockPage" style="display: none; text-align: center; padding: 40px 20px;">
+        <h2 style="color: #c0392b; margin-bottom: 10px;">❌ প্রবেশ নিষিদ্ধ</h2>
+        <p style="color: #555; font-size: 16px; margin-bottom: 30px;">আপনি ইতিমধ্যে একবার পরীক্ষায় অংশগ্রহণ করেছেন অথবা আপনার পরীক্ষা বাতিল হয়েছে।</p>
+        <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; display: inline-block; border: 1px solid #e9ecef; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h4 style="margin-top:0; color: #2c3e50; font-size: 18px;">🔒 ডিভাইস আনলক প্যানেল</h4>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">এডমিন পাসওয়ার্ড অথবা স্টুডেন্ট ওয়ান-টাইম পাসওয়ার্ড দিন</p>
+            <input type="password" id="unlock_password" placeholder="পাসওয়ার্ড লিখুন" style="padding:12px; width: 220px; border:1px solid #cbd5e1; border-radius:5px; margin-bottom: 15px; text-align: center; font-size: 16px; display: block; margin-left: auto; margin-right: auto;">
+            <button type="button" onclick="unlockDevice()" style="padding:12px 20px; background:#2980b9; color:#fff; border:none; border-radius:5px; cursor:pointer; font-weight: bold; font-size: 16px; width: 100%; transition: 0.3s;">ডিভাইস আনলক করুন</button>
+        </div>
+    </div>
+
+    <div id="coverPage">  
+        <div class="header-container">  
+            <h1 class="english-title">𝕊𝕊ℂ | ᗩSᗷ</h1>  
+            <h2 class="main-title" style="font-size: 24px;">সাধারণ জ্ঞান ও পাঠাবহির্ভূত (Out Knowledge) মূল্যায়ন পরীক্ষা 🎯</h2>  
+        </div>  
+        <div class="info-section">  
+            <div class="info-group">  
+                <label>👤 নাম:</label>  
+                <input type="text" id="student_name" placeholder="তোমার নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🔢 রোল নম্বর:</label>  
+                <input type="number" id="student_roll" placeholder="তোমার রোল নম্বর লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🎓 এসএসসি ব্যাচ:</label>  
+                <select id="student_batch">  
+                    <option value="" disabled selected>তোমার ব্যাচ নির্বাচন করো</option>  
+                    <option value="SSC '27">SSC '27</option>  
+                    <option value="SSC '28">SSC '28</option>  
+                    <option value="SSC '29">SSC '29</option>  
+                </select>  
+            </div>  
+            <div class="info-group">  
+                <label>🏫 স্কুলের নাম:</label>  
+                <input type="text" id="school_name" placeholder="তোমার স্কুলের নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>📍 জেলা:</label>  
+                <input type="text" id="district" placeholder="জেলার নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>📋 বোর্ড:</label>  
+                <input type="text" id="board" placeholder="শিক্ষা বোর্ডের নাম লেখো">  
+            </div>  
+            <div class="info-group">  
+                <label>🎭 কোন গ্রুপ:</label>  
+                <select id="student_group">  
+                    <option value="" disabled selected>তোমার গ্রুপ নির্বাচন করো</option>  
+                    <option value="Science">Science (বিজ্ঞান)</option>  
+                    <option value="Arts">Arts (মানবিক)</option>  
+                    <option value="Commerce">Commerce (ব্যবসায় শিক্ষা)</option>  
+                </select>  
+            </div>  
+            <button type="button" class="enter-btn" onclick="goToNotice()">পরবর্তী ধাপে যান</button>  
+        </div>  
+    </div>  
+
+    <div id="noticePage" style="display: none;">
+        <div class="instruction-box" style="border-left: 5px solid #e67e22;">
+            <h3 style="color: #e67e22; text-align: center;">📢 বিশেষ পরীক্ষার নোটিশ ও সিলেবাস 📢</h3>
+            <p style="text-align: center; font-weight: bold; font-size: 16px; color: #c0392b; margin-bottom: 15px;">🔴 সাধারণ জ্ঞান ও পাঠাবহির্ভূত (Out Knowledge) মূল্যায়ন পরীক্ষা 🔴</p>
+            <p style="text-align: center; font-size: 15px; color: #2c3e50; margin-bottom: 20px;">শিক্ষার্থীদের পাঠ্যবইয়ের গণ্ডির বাইরে বৈশ্বিক ইতিহাস, রাজনীতি ও মহাবিশ্ব সম্পর্কে জ্ঞানচর্চা বৃদ্ধির লক্ষ্যে এই বিশেষ মূল্যায়নের আয়োজন করা হয়েছে।</p>
+            
+            <div style="background: #fdf2e9; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #f5cba7; text-align: left;">
+                <p style="margin: 8px 0; font-weight: bold; color: #1e3799;">📌 পরীক্ষার বিস্তারিত:</p>
+                <p style="margin: 5px 0;">📚 <strong>বিষয়:</strong> ইতিহাস এবং মহাকাশবিজ্ঞান ও জ্যোতির্বিদ্যা</p>
+                <p style="margin: 5px 0;">📝 <strong>প্রশ্ন:</strong> ৫০ টি MCQ</p>
+                <p style="margin: 5px 0;">⏰ <strong>সময়:</strong> ৪০ মিনিট</p>
+                <p style="margin: 5px 0;">🎯 <strong>পূর্ণমান:</strong> ৫০ মার্ক (প্রতিটি সঠিক উত্তরে ১, প্রতি ভুলেও ০.২০ মার্ক কাটা হবে)</p>
+            </div>
+
+            <div style="background: #e8f8f5; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #a3e4d7; text-align: left;">
+                <p style="margin: 8px 0; font-weight: bold; color: #16a085;">📚 পরীক্ষার সিলেবাস:</p>
+                <p style="margin: 5px 0;">🏛️ <strong>ইতিহাস (History):</strong> প্রাচীন সভ্যতা (মিশরীয় ও মেসোপটেমীয়), বাংলার ইতিহাস (রাজা শশাঙ্ক ও বখতিয়ার খলজি), মুঘল সাম্রাজ্য, উপমহাদেশ (১৭৫৬–১৯৪৭), বিশ্ব ইতিহাস ও বিশ্বযুদ্ধ।</p>
+                <p style="margin: 5px 0; margin-top: 8px;">🌌 <strong>মহাকাশবিজ্ঞান ও জ্যোতির্বিদ্যা:</strong> গ্রহসমূহের বর্ণনা, ব্ল্যাক হোল, মুক্তিবেগ (Escape Velocity), চন্দ্রশেখর সীমা, বিগ ব্যাং তত্ত্ব ইত্যাদি।</p>
+            </div>
+
+            <p style="text-align: center; font-weight: bold; color: #d35400; margin-top: 20px; font-size: 15px;">⚠️ পরীক্ষাটি সম্পূর্ণ পাঠ্যবই বহির্ভূত সাধারণ জ্ঞান ও মানসিক দক্ষতার ওপর ভিত্তি করে হবে।<br>সবাই ভালোভাবে প্রস্তুতি নাও।</p>
+            
+            <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; font-weight: bold;">
+                <p style="margin: 3px 0; color: #2c3e50; font-size: 16px;">ধন্যবাদ।</p>
+                <p style="margin: 8px 0 3px 0; color: #c0392b; font-size: 17px;">- পরীক্ষা পরিচালনা কমিটি ❣️</p>
+            </div>
+        </div>
+        <button type="button" class="proceed-btn" onclick="goToInstructions()">পরবর্তী ধাপে যান (নিয়মাবলী)</button>
+    </div>
+
+    <div id="instructionPage" style="display: none;">  
+        <div class="instruction-box">
+            <h3 style="color: #c0392b;">📢 জরুরি নোটিশ: কুইজ প্রতিযোগিতার নিয়মাবলী ও নিরাপত্তা ব্যবস্থা</h3>
+            <p>প্রিয় শিক্ষার্থীবৃন্দ,<br>আমাদের অনলাইন কুইজ প্রতিযোগিতায় সর্বোচ্চ স্বচ্ছতা বজায় রাখার জন্য সিস্টেমে কঠোর নিরাপত্তা বা 'এন্টি-চিট' (Anti-Cheat) মেকানিজম যুক্ত করা হয়েছে। পরীক্ষায় অংশগ্রহণ করার আগে নিচের নির্দেশনাবলী খুব ভালোভাবে পড়ে নেওয়ার জন্য বলা হচ্ছে।</p>
+            
+            <h4 style="color: #2980b9; margin-top: 20px;">📱 পরীক্ষা শুরুর আগে অত্যন্ত জরুরি প্রস্তুতি:</h4>
+            <p><strong>'Do Not Disturb' (DND) অন করুন:</strong> পরীক্ষা শুরু করার আগেই আপনার ফোনের Do Not Disturb (DND) বা Silent Mode অন করে নিন। পরীক্ষা চলাকালীন কোনো ফোন কল, মেসেজ বা অ্যাপের নোটিফিকেশন স্ক্রিনে ভেসে উঠলে (বা ভুলবশত সেখানে ক্লিক লাগলে) সিস্টেম তা 'ট্যাব পরিবর্তন' হিসেবে ধরে নিতে পারে। ফলে আপনার পরীক্ষা স্বয়ংক্রিয়ভাবে বাতিল হয়ে যাওয়ার ঝুঁকি থাকবে।</p>
+
+            <h4 style="color: #c0392b; margin-top: 20px;">🚫 যেসব কারণে পরীক্ষা তাৎক্ষণিক বাতিল (Auto-Submit) হয়ে যাবে:</h4>
+            <ul style="color: #333; font-weight: normal; list-style-type: decimal; margin-bottom: 20px;">
+                <li><strong>ট্যাব বা উইন্ডো পরিবর্তন:</strong> পরীক্ষা চলাকালীন ব্রাউজারের ট্যাব পরিবর্তন করলে, পেজ মিনিমাইজ করলে বা অন্য কোনো অ্যাপ ওপেন করলে।</li>
+                <li><strong>ফুলস্ক্রিন থেকে বের হওয়া:</strong> পরীক্ষা শুরু হওয়ার পর স্ক্রিনটি স্বয়ংক্রিয়ভাবে ফুলস্ক্রিন হয়ে যাবে। ব্যাক বাটন চেপে বা অন্য কোনোভাবে ফুলস্ক্রিন মোড থেকে বের হওয়ার চেষ্টা করলে (সর্বোচ্চ ৫ বার সতর্ক করা হবে, ৬ষ্ঠ বার বাতিল)।</li>
+                <li><strong>পেজ রিফ্রেশ বা রিলোড করা:</strong> পরীক্ষা চলাকালীন ভুলবশত বা ইচ্ছাকৃতভাবে পেজ রিফ্রেশ (Refresh) করলে বা ব্যাক (Back) বাটনে চাপ দিলে।</li>
+                <li><strong>ফোন স্ক্রিন লক করা:</strong> পরীক্ষা চলাকালীন পাওয়ার বাটন চেপে স্ক্রিন লক করলে বা ডিসপ্লে টাইম-আউট হয়ে স্ক্রিন অফ হয়ে গেলে।</li>
+            </ul>
+
+            <h4 style="color: #27ae60; margin-top: 20px;">🔒 সিস্টেমে যুক্ত থাকা নিরাপত্তা ফিচারসমূহ (Security Features):</h4>
+            <ul style="color: #333; font-weight: normal; list-style-type: decimal; margin-bottom: 20px;">
+                <li><strong>রাইট-ক্লিক ও কপি-পেস্ট বন্ধ:</strong> মাউসের Right-Click সম্পূর্ণ নিষ্ক্রিয়। কোনো প্রশ্ন বা অপশন সিলেক্ট বা কপি (Ctrl+C) করা যাবে না।</li>
+                <li><strong>কিবোর্ড শর্টকাট ব্লক:</strong> পেজ সেভ (Ctrl+S), সোর্স কোড দেখা (Ctrl+U) বা অল-সিলেক্ট (Ctrl+A) করার শর্টকাট কাজ করবে না।</li>
+                <li><strong>ডেভেলপার টুলস রেস্ট্রিকশন:</strong> F12 বা Ctrl+Shift+I/J/C চেপে ইন্সপেক্ট এলিমেন্ট (Inspect Element) বা কনসোল খোলার কোনো সুযোগ নেই।</li>
+                <li><strong>সিঙ্গেল এন্ট্রি সিস্টেম:</strong> একজন পরীক্ষার্থী একটি ডিভাইস থেকে কেবল একবারই পরীক্ষা দিতে পারবে। পরীক্ষা সাবমিট বা ব্লক হয়ে গেলে সাধারণ লিংকের মাধ্যমে দ্বিতীয়বার প্রবেশের সুযোগ নেই।</li>
+                <li><strong>অফলাইন ট্র্যাকিং সিস্টেম:</strong> পরীক্ষা চলাকালীন ইন্টারনেট সংযোগ বিচ্ছিন্ন হলেও সিস্টেম সচল থাকবে এবং ডাটা সেভ হয়ে থাকবে। ইন্টারনেট ফিরে আসার সাথে সাথে তা এডমিন প্যানেলে সেন্ড হয়ে যাবে।</li>
+            </ul>
+
+            <div class="warning-text">
+                ⚠️ সতর্কতা: প্রতিটি ভুল উত্তরের জন্য ০.২০ নম্বর কাটা হবে। নিয়ম ভঙ্গের কারণে পরীক্ষা বাতিল হলে রিপোর্ট সরাসরি এডমিনের কাছে চলে যাবে।
+            </div>
+            
+            <p style="text-align: center; font-weight: bold; color: #2980b9; margin-top: 20px;">সততাই সর্বোৎকৃষ্ট পন্থা। নিজের মেধার উপর বিশ্বাস রাখো। <br>সবার জন্য শুভকামনা! 🎯</p>
+        </div>
+        <button type="button" class="proceed-btn" onclick="startExam()">আমি বুঝতে পেরেছি, পরীক্ষা শুরু করুন</button>  
+    </div>  
+
+    <div id="examPage" style="display: none;">  
+        <div class="header-container">  
+            <h1 class="main-title">Out Knowledge Mega Quiz 🎯</h1>  
+            <h2 class="sub-title">ইতিহাস ও মহাকাশবিজ্ঞান (৫০টি বহুনির্বাচনি প্রশ্ন | নেগেটিভ মার্কিং: ০.২০)</h2>  
+        </div>
+        
+        <div class="timer-box" id="timer">বাকি সময়: ৪০:০০ মিনিট</div>  
+        
+        <form id="quizForm" onsubmit="handleFormSubmit(event)">  
+            
+            <div id="questionsContainer">
+                <script>
+                    const questionsData = [
+                        // ইতিহাস (১ - ২৫)
+                        { q: "১. প্রাচীন মিশরীয়রা নিজেদের দেশকে কী নামে ডাকত?", opts: ["(ক) Egypt", "(খ) Kemet", "(গ) Nile", "(ঘ) Cairo"] },
+                        { q: "২. উচ্চ মিশর ও নিম্ন মিশরকে একত্রিত করেন কে?", opts: ["(ক) হেরোডোটাস", "(খ) জোসের", "(গ) মেনেস", "(ঘ) রামেসিস-II"] },
+                        { q: "৩. মেনেসের রাজধানী ছিল—", opts: ["(ক) থিবস", "(খ) মেমফিস", "(গ) আলেকজান্দ্রিয়া", "(ঘ) সাক্কারা"] },
+                        { q: "৪. জোসের ফারাওয়ের সোপানযুক্ত পিরামিডের স্থপতি কে ছিলেন?", opts: ["(ক) ইমহোতেপ", "(খ) খুফু", "(গ) হাতশেপসুত", "(ঘ) আখেনাতেন"] },
+                        { q: "৫. প্রাচীন বিশ্বের সপ্তাশ্চর্যের একটি কোনটি?", opts: ["(ক) খাফরের পিরামিড", "(খ) মেনকাউরের পিরামিড", "(গ) খুফুর পিরামিড", "(ঘ) লাক্সর মন্দির"] },
+                        { q: "৬. মিশরীয়দের তিনটি প্রধান লিপির মধ্যে ছবি-ভিত্তিক পবিত্র লিপি কোনটি?", opts: ["(ক) হায়ারেটিক", "(খ) ডেমোটিক", "(গ) হায়ারোগ্লিফিক", "(ঘ) কিউনিফর্ম"] },
+                        { q: "৭. মিশরীয়রা কোন গাছ থেকে লেখার উপকরণ তৈরি করত?", opts: ["(ক) বাঁশ", "(খ) প্যাপিরাস", "(গ) তালগাছ", "(ঘ) শ্যাওলা"] },
+                        { q: "৮. মিশরীয় বিশ্বাসে মৃতের হৃদয় কীসের সঙ্গে ওজন করা হতো?", opts: ["(ক) সোনার পাত", "(খ) সত্যের পালক", "(গ) পাথর", "(ঘ) রাজার মুকুট"] },
+                        { q: "৯. মমিকরণে সাধারণত কত দিন সময় লাগত?", opts: ["(ক) ৩০ দিন", "(খ) ৫০ দিন", "(গ) ৭০ দিন", "(ঘ) ১০০ দিন"] },
+                        { q: "১০. মেসোপটেমিয়া অর্থ কী?", opts: ["(ক) নদীদের মাঝের দেশ", "(খ) সূর্যের দেশ", "(গ) পাহাড়ের দেশ", "(ঘ) রাজাদের দেশ"] },
+                        { q: "১১. মেসোপটেমিয়ার দুটি প্রধান নদী কোনটি?", opts: ["(ক) নীল ও সেনেগাল", "(খ) দজলা ও ফরাত", "(গ) গঙ্গা ও যমুনা", "(ঘ) সিন্ধু ও সরস্বতী"] },
+                        { q: "১২. কিউনিফর্ম বা কীলকাকৃতি লিপির উদ্ভাবক কারা?", opts: ["(ক) মিশরীয়রা", "(খ) সুমেরীয়রা", "(গ) গ্রিকরা", "(ঘ) রোমানরা"] },
+                        { q: "১৩. হাম্মুরাবি কোন রাজ্যের বিখ্যাত শাসক ছিলেন?", opts: ["(ক) অ্যাসিরিয়া", "(খ) ব্যাবিলন", "(গ) সুমের", "(ঘ) পারস্য"] },
+                        { q: "১৪. মেসোপটেমীয় সাহিত্যের বিখ্যাত মহাকাব্য কোনটি?", opts: ["(ক) ইনিয়াস", "(খ) ওডিসি", "(গ) গিলগামেশ", "(ঘ) ইলিয়াড"] },
+                        { q: "১৫. বাংলার গৌড় রাজ্যের প্রথম স্বাধীন শাসক কে ছিলেন?", opts: ["(ক) হর্ষবর্ধন", "(খ) শশাঙ্ক", "(গ) গোপাল", "(ঘ) ধর্মপাল"] },
+                        { q: "১৬. শশাঙ্কের রাজধানী কর্ণসুবর্ণ বর্তমানে কোন জেলায় অবস্থিত?", opts: ["(ক) মুর্শিদাবাদ", "(খ) মালদা", "(গ) দক্ষিণ দিনাজপুর", "(ঘ) নদিয়া"] },
+                        { q: "১৭. বাংলায় মুসলিম শাসনের সূচনা করেন কে?", opts: ["(ক) ইলতুৎমিশ", "(খ) বখতিয়ার খলজি", "(গ) আলাউদ্দিন খলজি", "(ঘ) বাবর"] },
+                        { q: "১৮. বখতিয়ার খলজির রাজধানী দেবকোট বর্তমানে কোথায়?", opts: ["(ক) মালদায়", "(খ) নদিয়ায়", "(গ) দক্ষিণ দিনাজপুরে", "(ঘ) রাজশাহীতে"] },
+                        { q: "১৯. মুঘল সাম্রাজ্য কে প্রতিষ্ঠা করেন এবং কোন সালে?", opts: ["(ক) আকবর, ১৫৫৬", "(খ) বাবর, ১৫২৬", "(গ) হুমায়ুন, ১৫৩০", "(ঘ) শাহজাহান, ১৬২৮"] },
+                        { q: "২০. পানিপথের দ্বিতীয় যুদ্ধে আকবর কাকে পরাজিত করেন?", opts: ["(ক) ইব্রাহিম লোদি", "(খ) রানা প্রতাপ", "(গ) হেমু", "(ঘ) শেরশাহ"] },
+                        { q: "২১. পলাশীর যুদ্ধ কবে সংঘটিত হয়?", opts: ["(ক) ১৭৫৬ সালের ২৩ জুন", "(খ) ১৭৫৭ সালের ২৩ জুন", "(গ) ১৭৬৪ সালের ২৩ জুন", "(ঘ) ১৭৬৫ সালের ২৩ জুন"] },
+                        { q: "২২. পলাশীর যুদ্ধে সিরাজউদ্দৌলার বিরুদ্ধে বিশ্বাসঘাতকতা করেন কে?", opts: ["(ক) মীরজাফর", "(খ) মীর কাসিম", "(গ) শুজাউদ্দৌলা", "(ঘ) শাহ আলম"] },
+                        { q: "২৩. ১৮৫৭ সালের মহাবিদ্রোহের ফলে ইস্ট ইন্ডিয়া কোম্পানির শাসন কী হয়?", opts: ["(ক) আরও শক্তিশালী হয়", "(খ) ব্রিটিশ রাজতন্ত্রের হাতে চলে যায়", "(গ) ভারত স্বাধীন হয়", "(ঘ) মুঘল শাসন পুনরুদ্ধার হয়"] },
+                        { q: "২৪. ১৯৪০ সালের লাহোর প্রস্তাব গ্রহণ করে কোন দল?", opts: ["(ক) ভারতীয় জাতীয় কংগ্রেস", "(খ) মুসলিম লিগ", "(গ) আওয়ামী লিগ", "(ঘ) হিন্দু মহাসভা"] },
+                        { q: "২৫. প্রথম বিশ্বযুদ্ধের তাৎক্ষণিক সূচনা কোন ঘটনা?", opts: ["(ক) পার্ল হারবার আক্রমণ", "(খ) সারায়েভোতে ফ্রান্ৎস ফার্দিনান্দ হত্যা", "(গ) পোল্যান্ড আক্রমণ", "(ঘ) রাশিয়ান বিপ্লব"] },
+
+                        // মহাকাশবিজ্ঞান ও জ্যোতির্বিদ্যা (২৬ - ৫০)
+                        { q: "২৬. বিগ ব্যাং তত্ত্ব অনুযায়ী মহাবিশ্বের সূচনা কী থেকে?", opts: ["(ক) গ্যালাক্সি", "(খ) সিঙ্গুলারিটি", "(গ) ফোটন কণা", "(ঘ) বোসন কণা"] },
+                        { q: "২৭. বর্তমানে মহাবিশ্বের গড় তাপমাত্রা প্রায় কত?", opts: ["(ক) 100 K", "(খ) 15.7 K", "(গ) 3.8 K", "(ঘ) 2.7 K"] },
+                        { q: "২৮. পৃথিবীর মুক্তিবেগ (Escape Velocity) কত?", opts: ["(ক) 11.2 km/h", "(খ) 14.2 km/s", "(গ) 11.2 km/s", "(ঘ) 14.2 km/h"] },
+                        { q: "২৯. 1 অ্যাস্ট্রোনমিক্যাল ইউনিট (Astronomical Unit বা AU) বলতে কী বোঝায়?", opts: ["(ক) চাঁদ থেকে সূর্যের গড় দূরত্ব", "(খ) মিল্কিওয়ে গ্যালাক্সির পরিধি", "(গ) ১ আলোকবর্ষ", "(ঘ) পৃথিবী থেকে সূর্যের গড় দূরত্ব"] },
+                        { q: "৩০. বৃহৎ ভরের কোনো নক্ষত্রের জীবনের শেষ পর্যায়ে সংঘটিত প্রবল বিস্ফোরণকে কী বলে?", opts: ["(ক) Solar Flare", "(খ) Supernova", "(গ) Tidal Bore", "(ঘ) Spaghettification"] },
+                        { q: "৩১. নাক্ষত্রিক ভরের ব্ল্যাক হোলের তুলনায় সুপারম্যাসিভ ব্ল্যাক হোলের ঘটনা দিগন্তে কোন বলের প্রভাব তুলনামূলক দুর্বল হতে পারে?", opts: ["(ক) Centrifugal Force", "(খ) Strong Nuclear Force", "(গ) Tidal Force", "(ঘ) Weak Nuclear Force"] },
+                        { q: "৩২. পৃথিবীর ভরের সমান ভরের একটি অঘূর্ণায়মান ও আধানহীন ব্ল্যাক হোলের শোয়ার্জশিল্ড ব্যাসার্ধ (Schwarzschild Radius) প্রায় কত হবে?", opts: ["(ক) 4.29 m", "(খ) 8.87 mm", "(গ) 6.67 mm", "(ঘ) 4 nm"] },
+                        { q: "৩৩. সূর্যের অন্তিম পরিণতি কোনটি?", opts: ["(ক) Crab Nebula", "(খ) White Dwarf", "(গ) Dwarf Planet", "(ঘ) Neutron Star"] },
+                        { q: "৩৪. নিচের কোন কাল্পনিক স্থান–কালীয় কাঠামোর মাধ্যমে টাইম ট্রাভেলের তাত্ত্বিক সম্ভাবনা আলোচনা করা হয়?", opts: ["(ক) Crab Nebula", "(খ) Black Hole", "(গ) Gray Hole", "(ঘ) Wormhole"] },
+                        { q: "৩৫. মহাবিশ্বের কণাগুলোর প্রধান দুই শ্রেণি কোনটি?", opts: ["(ক) Electron, Proton ও Neutron", "(খ) Boson ও Fermion", "(গ) Pion ও Down Quark", "(ঘ) Meson ও Quark"] },
+                        { q: "৩৬. সময় প্রসারণের উদাহরণ কোন কণার জীবনকালের ক্ষেত্রে পাওয়া যায়?", opts: ["(ক) মিউওন", "(খ) পাইওন", "(গ) মেসন", "(ঘ) ফোটন"] },
+                        { q: "৩৭. প্রাচীনতম লিখিতভাবে উল্লিখিত গ্যালাক্সি কোনটি?", opts: ["(ক) M87", "(খ) Andromeda", "(গ) Milkomeda", "(ঘ) M51"] },
+                        { q: "৩৮. মিল্কিওয়ে গ্যালাক্সির কেন্দ্রে অবস্থিত সুপারম্যাসিভ ব্ল্যাক হোল কোনটি?", opts: ["(ক) Sgr A*", "(খ) TON 618", "(গ) OJ 287", "(ঘ) Phoenix Cluster Black Hole"] },
+                        { q: "৩৯. বিগ ব্যাংয়ের পর প্রথম তৈরি হওয়া মৌল কোনটি?", opts: ["(ক) Helium", "(খ) Neon", "(গ) Hydrogen", "(ঘ) Lithium"] },
+                        { q: "৪০. পৃথিবী প্রকৃতপক্ষে কোনটিকে কেন্দ্র করে পরিক্রমণ করে?", opts: ["(ক) সূর্যকে", "(খ) Sgr A*-কে", "(গ) পৃথিবী ও সূর্যের সাধারণ ভরকেন্দ্রকে (Barycenter)", "(ঘ) সূর্য ও M87-এর সাধারণ ভরকেন্দ্রকে"] },
+                        { q: "৪১. কোন গ্রহের অভ্যন্তরে হীরার বৃষ্টি হতে পারে বলে বৈজ্ঞানিক অনুমান রয়েছে?", opts: ["(ক) মঙ্গল", "(খ) শুক্র", "(গ) শনি", "(ঘ) পৃথিবী"] },
+                        { q: "৪২. সৌরজগতের উত্তর দিক থেকে দেখলে কোন গ্রহটি ঘড়ির কাঁটার দিকে (Clockwise) ঘোরে?", opts: ["(ক) Jupiter", "(খ) Saturn", "(গ) Mercury", "(ঘ) Venus"] },
+                        { q: "৪৩. পৃথিবীতে আদি প্রাণের উৎপত্তি-সম্পর্কিত অনুকল্প কোনটি?", opts: ["(ক) Genetic Hypothesis", "(খ) RNA World Hypothesis", "(গ) Evolution Hypothesis", "(ঘ) Carbonyl Hypothesis"] },
+                        { q: "৪৪. তড়িৎচুম্বকীয় তরঙ্গে বৈদ্যুতিক ও চৌম্বক ক্ষেত্রের মধ্যে সম্পর্ক কী?", opts: ["(ক) পরস্পর লম্ব এবং পরিবর্তনশীল", "(খ) পরস্পর সমান্তরাল ও স্থির", "(গ) শুধু বৈদ্যুতিক ক্ষেত্র থাকে", "(ঘ) শুধু চৌম্বক ক্ষেত্র থাকে"] },
+                        { q: "৪৫. নিচের কোন বক্তব্যটি সঠিক?", opts: ["(ক) Visibility is not a dimension", "(খ) There are 3 spatial dimensions", "(গ) Momentum is relative", "(ঘ) Pluto is a planet"] },
+                        { q: "৪৬. IAU কোন সালে প্লুটোকে “Dwarf Planet” ঘোষণা করে?", opts: ["(ক) 2006", "(খ) 1999", "(গ) 2001", "(ঘ) 2009"] },
+                        { q: "৪৭. সৌরজগতের সর্বোচ্চ পর্বতশৃঙ্গ কোনটি?", opts: ["(ক) Mount Everest", "(খ) Olympus Mons", "(গ) Alps", "(ঘ) Arsia Mons"] },
+                        { q: "৪৮. কোন গ্রহের গড় ঘনত্ব সবচেয়ে কম এবং পানির ঘনত্বের চেয়েও কম?", opts: ["(ক) Saturn", "(খ) Earth", "(গ) Jupiter", "(ঘ) Mars"] },
+                        { q: "৪৯. আলো পৃথিবী থেকে সূর্যে পৌঁছাতে গড়ে কত সময় নেয়?", opts: ["(ক) ২৩ সেকেন্ড", "(খ) ৯ মিনিট ৩৪ সেকেন্ড", "(গ) ১৪ মিনিট ২১ সেকেন্ড", "(ঘ) ৮ মিনিট ২০ সেকেন্ড"] },
+                        { q: "৫০. মহাবিশ্বের সবচেয়ে ঠান্ডা স্থান বুমেরাং নীহারিকার (Boomerang Nebula) তাপমাত্রা প্রায় কত?", opts: ["(ক) −280.67 °C", "(খ) −274.67 °C", "(গ) −272.15 °C", "(ঘ) −273.15 °C"] }
+                    ];
+
+                    const valMap = ["ক", "খ", "গ", "ঘ"];
+                    let htmlContent = "";
+                    questionsData.forEach((item, index) => {
+                        htmlContent += `<div class="question-card">
+                            <div class="question-text">${item.q}</div>
+                            <div class="options">`;
+                        item.opts.forEach((opt, oIndex) => {
+                            htmlContent += `<label class="option-label"><input type="radio" name="q${index+1}" value="${valMap[oIndex]}" onclick="lockQuestion(this, ${index+1})"> ${opt}</label>`;
+                        });
+                        htmlContent += `</div></div>`;
+                    });
+                    document.write(htmlContent);
+                </script>
+            </div>
+
+            <div class="feedback-section">  
+                <h3>💬 মন্তব্য সেকশন (বাধ্যতামূলক)</h3>  
+                <div class="feedback-group">  
+                    <p>পরীক্ষাটি কেমন লাগলো— *</p>  
+                    <label><input type="radio" name="fb_rating" value="অনেক ভালো"> অনেক ভালো</label><br>  
+                    <label><input type="radio" name="fb_rating" value="ভালো"> ভালো</label><br>  
+                    <label><input type="radio" name="fb_rating" value="মোটামুটি"> মোটামুটি</label><br>  
+                    <label><input type="radio" name="fb_rating" value="খারাপ"> খারাপ</label>  
+                </div>  
+                <div class="feedback-group">  
+                    <p>পরীক্ষার প্রশ্ন কেমন ছিল — *</p>  
+                    <label><input type="radio" name="fb_diff" value="সহজ"> সহজ</label><br>  
+                    <label><input type="radio" name="fb_diff" value="অতি সহজ"> অতি সহজ</label><br>  
+                    <label><input type="radio" name="fb_diff" value="মোটামুটি"> মোটামুটি</label><br>  
+                    <label><input type="radio" name="fb_diff" value="কঠিন"> কঠিন</label><br>  
+                    <label><input type="radio" name="fb_diff" value="অতিরিক্ত কঠিন"> অতিরিক্ত কঠিন</label>  
+                </div>  
+            </div>  
+
+            <button type="submit" class="submit-btn" id="submitBtn">পরীক্ষা সাবমিট করুন</button>  
+        </form>  
+    </div>  
+</div>  
+
+<script>
+    const _aP = atob("VGVjbm8ta2MxQCMxMjM="); // Admin Password
+    
+    const answerKeys = ["ক", "খ", "গ", "ঘ"];
+    // 50 MCQ Correct Answer Indices (0=ক, 1=খ, 2=গ, 3=ঘ)
+    const _cA = [
+        1, 2, 1, 0, 2, 2, 1, 1, 2, 0, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 0, 1, 1, 1, // ১-২৫ (ইতিহাস)
+        1, 3, 2, 3, 1, 2, 1, 1, 3, 1, 0, 1, 0, 2, 2, 2, 3, 1, 0, 0, 0, 1, 0, 3, 2  // ২৬-৫০ (মহাকাশবিজ্ঞান)
+    ];
+    
+    function getCorrectAnswer(questionIndex) {
+        return answerKeys[_cA[questionIndex - 1]];
+    }
+
+    const studentOTP = [
+        "7A3B9X", "2M8C4V", "9K1N6P", "5X7R2T", "4L9W3M", "8V2P5K", "1C6N8H", "3B7T4F", "6M5X9D", "2P4R7L",
+        "9T1V8C", "5N3B6X", "7K8M2P", "4R6T9V", "1X5N3C", "8B2K7M", "3P9R4T", "6V1X8N", "2C7B5K", "9M4P1R",
+        "5T8V3X", "7N2C6B", "4K9M1P", "1R5T8V", "8X3N7C", "3B6K2M", "6P1R4T", "2V8X5N", "9C3B7K", "5M9P2R",
+        "7T4V1X", "4N8C3B", "1K5M9P", "8R2T6V", "3X7N4C", "6B1K8M", "2P5R9T", "9V3X7N", "5C8B2K", "7M4P1R",
+        "4T9V5X", "1N6C3B", "8K2M7P", "3R5T9V", "6X1N8C", "2B7K4M", "9P3R6T", "5V8X2N", "7C4B9K", "4M1P5R",
+        "1T6V8X", "8N3C7B", "3K9M2P", "6R4T1V", "2X7N5C", "9B2K8M", "5P9R3T", "7V4X1N", "4C8B6K", "1M5P9R",
+        "8T2V7X", "3N6C4B", "6K1M8P", "2R7T5V", "9X3N1C", "5B8K4M", "7P2R9T", "4V6X3N", "1C9B5K", "8M4P2R",
+        "3T7V9X", "6N2C8B", "2K5M1P", "9R8T4V", "5X3N7C", "7B6K2M", "4P1R8T", "1V9X5N", "8C4B3K", "3M7P2R",
+        "6T5V1X", "2N9C8B", "9K4M5P", "5R2T7V", "7X6N3C", "4B1K8M", "1P8R4T", "8V3X9N", "3C7B5K", "6M2P1R",
+        "2T9V4X", "9N5C3B", "5K8M7P", "7R1T6V", "4X3N2C", "1B9K8M", "8P4R5T", "3V7X1N", "6C2B9K", "2M5P8R"
+    ];
+
+    window.lockQuestion = function(radioElem, qNum) {
+        let name = "q" + qNum;
+        let radios = document.querySelectorAll(`input[name="${name}"]`);
+        radios.forEach(r => {
+            r.disabled = true;
+            r.parentElement.style.cursor = "not-allowed";
+            r.parentElement.style.opacity = "0.7";
+        });
+    };
+
+    let totalExamTime = 40 * 60; // ৪০ মিনিট
+    let timeLeft = totalExamTime; 
+    let timerInterval;
+    let monitoringActive = false;
+    let isSubmitted = false;
+    let fullscreenExits = 0;
+
+    const adminUnlockedKey = "admin_unlocked_gk_v1";
+    const examTakenKey = "exam_taken_gk_v1";
+    const usedOTPKey = "used_student_passwords_gk_v1";
+    const unlockMethodKey = "unlock_method_gk_v1";
+
+    const toBengaliDigits = num => num.toString().split("").map(digit => {
+        return {"0":"০","1":"১","2":"২","3":"৩","4":"৪","5":"৫","6":"৬","7":"৭","8":"৮","9":"৯"}[digit] || digit;
+    }).join("");
+
+    window.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem(adminUnlockedKey) === "1") {
+            document.getElementById("coverPage").style.display = "block";
+        } else if (localStorage.getItem(examTakenKey) === "1") {
+            document.getElementById("coverPage").style.display = "none";
+            document.getElementById("blockPage").style.display = "block";
+        } else {
+            localStorage.setItem(unlockMethodKey, "First Attempt (Regular)");
+            document.getElementById("coverPage").style.display = "block";
+        }
+    });
+
+    window.unlockDevice = function() {
+        let pass = document.getElementById("unlock_password").value.trim();
+        if(!pass) return alert("পাসওয়ার্ড দিন!");
+
+        if (pass === _aP) {
+            localStorage.setItem(adminUnlockedKey, "1");
+            localStorage.removeItem(examTakenKey);
+            localStorage.setItem(unlockMethodKey, "Admin Password");
+            document.getElementById("blockPage").style.display = "none";
+            document.getElementById("coverPage").style.display = "block";
+            return alert("✅ এডমিন অ্যাক্সেস সফল! আপনার ডিভাইসটি এই পরীক্ষার জন্য স্থায়ীভাবে আনলক করা হয়েছে।");
+        } 
+
+        let usedPasses = JSON.parse(localStorage.getItem(usedOTPKey) || "[]");
+
+        if (studentOTP.includes(pass)) {
+            if (usedPasses.includes(pass)) {
+                return alert("❌ এই পাসওয়ার্ডটি ইতিমধ্যে একবার ব্যবহার করা হয়েছে। এটি দিয়ে আর পরীক্ষা দেওয়া যাবে না। নতুন পাসওয়ার্ড সংগ্রহ করো।");
+            } else {
+                usedPasses.push(pass);
+                localStorage.setItem(usedOTPKey, JSON.stringify(usedPasses));
+                
+                localStorage.setItem(adminUnlockedKey, "1");
+                localStorage.removeItem(examTakenKey);
+                localStorage.setItem(unlockMethodKey, "Student OTP");
+                document.getElementById("blockPage").style.display = "none";
+                document.getElementById("coverPage").style.display = "block";
+                return alert("✅ পাসওয়ার্ড সফল! তুমি নতুন করে আবার পরীক্ষা দিতে পারবে।");
+            }
+        }
+
+        alert("❌ ভুল পাসওয়ার্ড!");
+    };
+
+    document.addEventListener("contextmenu", e => {
+        if(monitoringActive) e.preventDefault();
+    }); 
+    document.addEventListener("keydown", e => {
+        if (!monitoringActive) return;
+        if (e.ctrlKey && ["c", "u", "s", "a"].includes(e.key.toLowerCase())) e.preventDefault();
+        if (e.keyCode === 123) e.preventDefault(); 
+        if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) e.preventDefault(); 
+    });
+
+    window.addEventListener("beforeunload", e => {
+        if (!isSubmitted && monitoringActive) {
+            sendTelegramReport("Student attempted to reload/close the tab during exam.", "পেজ রিফ্রেশ বা ক্লোজ করা");
+            e.preventDefault();
+            e.returnValue = "";
+        }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden && monitoringActive && !isSubmitted) {
+            alert("⚠️ ট্যাব পরিবর্তন বা পেজ মিনিমাইজ করার কারণে পরীক্ষা স্বয়ংক্রিয়ভাবে বাতিল হয়ে সাবমিট হচ্ছে!");
+            submitExam(true, 'ট্যাব পরিবর্তন বা পেজ মিনিমাইজ করা');
+        }
+    });
+
+    document.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement && monitoringActive && !isSubmitted) {
+            fullscreenExits++;
+            if(fullscreenExits >= 6) {
+                alert("⚠️ আপনি সর্বোচ্চ ৫ বার ফুলস্ক্রিন থেকে বের হয়েছেন! আপনার পরীক্ষা বাতিল করা হলো।");
+                submitExam(true, 'সর্বোচ্চ (৬ বার) ফুলস্ক্রিন মোড থেকে বের হওয়া');
+            } else {
+                document.getElementById("fsWarningText").innerText = `সতর্কতা (${toBengaliDigits(fullscreenExits)}/৫): ফুলস্ক্রিন থেকে বের হওয়া নিষেধ!`;
+                document.getElementById("fsOverlay").style.display = "block";
+            }
+        }
+    });
+
+    window.resumeFullscreen = function() {
+        let docElement = document.documentElement;
+        if (docElement.requestFullscreen) {
+            docElement.requestFullscreen().then(() => {
+                document.getElementById("fsOverlay").style.display = "none";
+            }).catch(() => { alert("ফুলস্ক্রিন এক্সেস দিন!"); });
+        } else if (docElement.webkitRequestFullscreen) {
+            docElement.webkitRequestFullscreen();
+            document.getElementById("fsOverlay").style.display = "none";
+        }
+    };
+
+    window.goToNotice = function() {
+        const fields = ["student_name", "student_roll", "student_batch", "school_name", "district", "board", "student_group"];
+        for (let field of fields) {
+            if (!document.getElementById(field).value.trim()) {
+                return alert("সব তথ্য পূরণ করো!");
+            }
+        }
+        document.getElementById("coverPage").style.display = "none";
+        document.getElementById("noticePage").style.display = "block";
+        window.scrollTo(0, 0);
+    };
+
+    window.goToInstructions = function() {
+        document.getElementById("noticePage").style.display = "none";
+        document.getElementById("instructionPage").style.display = "block";
+        window.scrollTo(0, 0);
+    };
+
+    window.startExam = function() {
+        localStorage.setItem(examTakenKey, "1"); 
+        localStorage.removeItem(adminUnlockedKey); 
+        
+        let docElement = document.documentElement;
+        if (docElement.requestFullscreen) {
+            docElement.requestFullscreen();
+        } else if (docElement.webkitRequestFullscreen) {
+            docElement.webkitRequestFullscreen();
+        }
+
+        document.getElementById("instructionPage").style.display = "none";
+        document.getElementById("examPage").style.display = "block";
+        window.scrollTo(0, 0);
+
+        setTimeout(() => { monitoringActive = true; }, 2000);
+        startTimer();
+    };
+
+    function startTimer() {
+        let timerDisplay = document.getElementById("timer");
+        
+        timerInterval = setInterval(() => {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+
+            let minStr = minutes < 10 ? "০" + toBengaliDigits(minutes) : toBengaliDigits(minutes);
+            let secStr = seconds < 10 ? "০" + toBengaliDigits(seconds) : toBengaliDigits(seconds);
+
+            timerDisplay.innerHTML = `বাকি সময়: ${minStr}:${secStr} মিনিট`;
+
+            if (timeLeft <= 30) {
+                timerDisplay.style.background = "#c0392b";
+                timerDisplay.classList.add("blink-warning");
+            } else if (timeLeft <= 60) {
+                timerDisplay.style.background = "#e74c3c";
+                timerDisplay.classList.remove("blink-warning"); 
+            } else if (timeLeft <= 300) {
+                timerDisplay.style.background = "#f39c12";
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerDisplay.innerHTML = "সময় শেষ!";
+                timerDisplay.classList.remove("blink-warning");
+                submitExam(true, 'সময় শেষ');
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    window.handleFormSubmit = function(e) {
+        e.preventDefault();
+        if (!isSubmitted) submitExam(false);
+    };
+
+    function sendTelegramReport(summary, suspendReason, scoreInfo = "") {
+        const botToken = "8702123578:AAEMD76CASwhPx7vhKFUBYZKNJ2yj-IAdLM";
+        const chatId = "7636813006";
+        
+        let sName = document.getElementById("student_name").value || "N/A";
+        let sRoll = document.getElementById("student_roll").value || "N/A";
+        let sBatch = document.getElementById("student_batch").value || "N/A";
+        let sGroup = document.getElementById("student_group").value || "N/A";
+        let sSchool = document.getElementById("school_name").value || "N/A";
+        let sBoard = document.getElementById("board").value || "N/A";
+        
+        let unlockMethod = localStorage.getItem(unlockMethodKey) || "First Attempt (Regular)";
+        
+        let message = `📝 *General Knowledge Mega Quiz Exam Report*\n\n` +
+                      `👤 *Name:* ${sName}\n` +
+                      `🔢 *Roll:* ${sRoll}\n` +
+                      `🎓 *Batch:* ${sBatch}\n` +
+                      `🏫 *School:* ${sSchool}\n` +
+                      `📋 *Board:* ${sBoard}\n` +
+                      `🎭 *Group:* ${sGroup}\n` +
+                      `🔐 *Access Mode:* ${unlockMethod}\n\n` +
+                      `📊 *Status:* ${suspendReason === false ? "✅ Successfully Submitted" : "❌ Auto-Submitted/Suspended"}\n`;
+        
+        if (suspendReason) {
+            message += `⚠️ *Reason:* ${suspendReason}\n`;
+        }
+
+        if (scoreInfo) {
+            message += `\n${scoreInfo}\n`;
+        }
+
+        message += `\n📋 *Quick Summary:*\n${summary}`;
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        
+        if(navigator.sendBeacon) {
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            formData.append('text', message);
+            formData.append('parse_mode', 'Markdown');
+            navigator.sendBeacon(url, formData);
+        } else {
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
+            }).catch(() => {});
+        }
+    }
+
+    function submitExam(isAutoSubmit, suspendReason = false) {
+        if (isSubmitted) return;
+
+        let rating = document.querySelector('input[name="fb_rating"]:checked');
+        let difficulty = document.querySelector('input[name="fb_diff"]:checked');
+
+        if (!isAutoSubmit && (!rating || !difficulty)) {
+            return alert("অনুগ্রহ করে মন্তব্য সেকশনটি পূরণ করুন!");
+        }
+
+        isSubmitted = true;
+        monitoringActive = false;
+        clearInterval(timerInterval);
+        document.getElementById("fsOverlay").style.display = "none";
+        
+        let finalTimeLeft = Math.max(0, timeLeft);
+        let timeTakenSeconds = totalExamTime - finalTimeLeft;
+        
+        let takenMin = Math.floor(timeTakenSeconds / 60);
+        let takenSec = timeTakenSeconds % 60;
+        let timeTakenText = `${toBengaliDigits(takenMin)} মিনিট ${toBengaliDigits(takenSec)} সেকেন্ড`;
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+
+        let correctCount = 0;
+        let wrongCount = 0;
+        let unattemptedCount = 0;
+        let summaryText = ""; 
+
+        for (let i = 1; i <= 50; i++) {
+            let card = document.querySelectorAll(".question-card")[i - 1];
+            let selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+            let userVal = selectedOption ? selectedOption.value : null;
+            let correctAnsVal = getCorrectAnswer(i);
+            let correctInput = card.querySelector(`input[name="q${i}"][value="${correctAnsVal}"]`);
+            let correctText = correctInput ? correctInput.parentElement.innerText.trim() : `(${correctAnsVal})`;
+
+            if (!userVal) {
+                unattemptedCount++;
+                summaryText += `${toBengaliDigits(i)} নং: ⚠️ উত্তর দেয়নি\n`;
+            } else if (userVal === correctAnsVal) {
+                correctCount++;
+            } else {
+                wrongCount++;
+                summaryText += `${toBengaliDigits(i)} নং: ❌ ভুল (সঠিক: ${correctText})\n`;
+            }
+        }
+        
+        let rawScore = correctCount; // প্রতিটি সঠিক উত্তরে ১ মার্ক
+        let negativeMarks = wrongCount * 0.20; // প্রতি ভুল উত্তরে ০.২০ মার্ক কাটা
+        let finalScore = Math.max(0, rawScore - negativeMarks).toFixed(2);
+
+        let autoSubmitNoticeHTML = '';
+        if (isAutoSubmit) {
+            autoSubmitNoticeHTML = `<div style="margin-top:25px; padding:20px; background:#fadbd8; color:#c0392b; border-radius:8px; border-left:6px solid #e74c3c; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align:center;">
+                <h3 style="margin-top:0; font-size: 20px;">⚠️ পরীক্ষা বাতিল</h3>
+                <p style="font-size: 16px; margin-bottom: 5px;">নিয়ম ভঙ্গ করার কারণে তোমার পরীক্ষা অটো-সাবমিট হয়ে গেছে।</p>
+                <p style="font-size: 14px; color: #7b241c; margin-bottom: 0;"><b>কারণ:</b> ${suspendReason}</p>
+            </div>`;
+        }
+
+        let finalSummaryText = summaryText !== "" ? summaryText : "সবগুলো উত্তর সঠিক হয়েছে! 🎉";
+
+        const escapeMD = (str) => str.replace(/[_*`\[]/g, '');
+
+        let sName = escapeMD(document.getElementById("student_name").value);
+        let sRoll = escapeMD(document.getElementById("student_roll").value);
+        let sBatch = escapeMD(document.getElementById("student_batch").value);
+        let sSchool = escapeMD(document.getElementById("school_name").value);
+        let sDist = escapeMD(document.getElementById("district").value);
+        let sBoard = escapeMD(document.getElementById("board").value);
+        let sGroup = document.getElementById("student_group").value;
+
+        const emailParams = {
+            name: sName,
+            roll: sRoll,
+            batch: sBatch,
+            school: sSchool,
+            district: sDist,
+            board: sBoard,
+            group: sGroup,
+            score: `${finalScore} / ৫০ (সঠিক: ${correctCount}, ভুল: ${wrongCount}, বাদ: ${unattemptedCount})`,
+            timeTaken: timeTakenText,
+            isAutoSubmit: isAutoSubmit ? `হ্যাঁ (${suspendReason})` : "না",
+            summaryText: finalSummaryText
+        };
+
+        let scoreReportInfo = `📈 *Score Details:*\n` +
+                              `• Correct: ${correctCount}\n` +
+                              `• Wrong: ${wrongCount} (Negative: -${negativeMarks.toFixed(2)})\n` +
+                              `• Unattempted: ${unattemptedCount}\n` +
+                              `• *Raw Score:* ${rawScore}/50\n` +
+                              `• *Final Score (with Negative Marking):* ${finalScore}/50`;
+
+        sendTelegramReport(`*Time Taken:* ${timeTakenText}\n\n*ভুল উত্তর ও অপ্রদর্শিত উত্তরসমূহ:*\n${finalSummaryText}`, suspendReason, scoreReportInfo);
+
+        const resultUIRender = () => {
+            window.scrollTo(0, 0);
+            
+            document.getElementById("mainContainer").innerHTML = `
+                <div style="text-align:center;">
+                    <h2 style="font-family: 'Hind Siliguri', sans-serif; font-size:32px; color:#2c3e50;">🎉 পরীক্ষা সফলভাবে সম্পন্ন হয়েছে!</h2>
+                    <div style="background:#27ae60; color:white; padding:15px 30px; border-radius:30px; display:inline-block; font-size:18px; font-weight:bold; margin-bottom:20px; font-family: 'Hind Siliguri', sans-serif;">
+                        আপনার উত্তরপত্রটি সফলভাবে এডমিনের কাছে জমা হয়েছে। 🚀
+                    </div>
+                    <br>
+                    <div style="background:#f9f9f9; padding:20px; border-radius:10px; border:1px solid #e2e8f0; margin: 20px 0; color:#333; font-size:16px; line-height:1.6;">
+                        <p style="margin:0 0 10px 0;">ধন্যবাদ আপনার অংশগ্রহণের জন্য! নির্ধারিত সময়ের মধ্যে সকল শিক্ষার্থীর পরীক্ষা সমাপ্ত হওয়ার পর পরীক্ষার ফলাফল আমাদের অফিশিয়াল গ্রুপে প্রকাশ করা হবে।</p>
+                        <p style="margin:0;">তখন পর্যন্ত সবাই ধৈর্য ধরে সাথে থাকুন।</p>
+                    </div>
+                    
+                    ${autoSubmitNoticeHTML}
+                    
+                    <div style="text-align:center; margin-top: 30px; background: #f8f9fa; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                        <h4 style="margin-top: 0; margin-bottom: 20px; color: #2c3e50; font-size: 20px; font-family: 'Hind Siliguri', sans-serif;">আমাদের সাপোর্ট ও আপডেট পেতে যুক্ত হও:</h4>
+                        
+                        <a href="https://m.me/j/6U358Gcjdm8aDaZ1/?send_source=gc%3Acopy_invite_link_t" target="_blank" style="display:inline-block; background:#0084ff; color:#fff; text-decoration:none; padding:12px 20px; border-radius:5px; font-weight:bold; font-size: 16px; transition:0.3s; box-shadow:0 4px 6px rgba(0,132,255,0.3); margin-bottom: 15px; width: 85%; max-width: 350px;">
+                            💬 Messenger গ্রুপে যুক্ত হও
+                        </a>
+                        <br>
+                        <a href="https://chat.whatsapp.com/CVexUPXbjy0G5S4r6qdUqE" target="_blank" style="display:inline-block; background:#25D366; color:#fff; text-decoration:none; padding:12px 20px; border-radius:5px; font-weight:bold; font-size: 16px; transition:0.3s; box-shadow:0 4px 6px rgba(37,211,102,0.3); width: 85%; max-width: 350px;">
+                            🟢 WhatsApp গ্রুপে যুক্ত হও
+                        </a>
+                    </div>
+                </div>`;
+        };
+
+        if (navigator.onLine) {
+            emailjs.send("service_s1fkqyp", "template_yjrl1cd", emailParams)
+                .then(function() {
+                    resultUIRender();
+                }, function() {
+                    alert("⚠️ রিপোর্ট ইমেইলে পাঠাতে সাময়িক সমস্যা হয়েছে! তবে এডমিনের কাছে টেলিগ্রামে রিপোর্ট পাঠানো হয়েছে।");
+                    resultUIRender();
+                });
+        } else {
+            alert("⚠️ ইন্টারনেট কানেকশন নেই! তোমার রেজাল্ট সার্ভারে পাঠানো সম্ভব হয়নি। দয়া করে ইন্টারনেট চালু করে আবার চেষ্টা করো।");
+            resultUIRender();
+        }
+    }
+</script>
+</body>  
+</html>
